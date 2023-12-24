@@ -47,7 +47,7 @@ const BenchmarkCard = ({ post, handleTagClick }) => {
                     </p>
 
                 </div>
-                <div className='copy_btn' onClick={handleCopy}>
+                {/* <div className='copy_btn' onClick={handleCopy}>
                     <Image
                         src={
                             copied === post.prompt
@@ -58,7 +58,7 @@ const BenchmarkCard = ({ post, handleTagClick }) => {
                         width={12}
                         height={12}
                     />
-                </div>
+                </div> */}
             </div>
         </div>
     );

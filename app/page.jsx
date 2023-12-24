@@ -1,5 +1,5 @@
 import Feed from "@components/Feed"
-
+import BenchmarkFeed from "@components/BenchmarkFeed"
 
 const Home = () => {
   return (
@@ -11,7 +11,8 @@ const Home = () => {
       <p className="desc text-center">
         Taipan Benchmarks is a collection of benchmarks that are easy to use and understand.
       </p>
-      <Feed />
+      {/* <Feed /> */}
+      <BenchmarkFeed />
 
     </section>
   )

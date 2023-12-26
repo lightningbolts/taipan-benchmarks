@@ -1,5 +1,6 @@
 "use client"
 import { useSession } from 'next-auth/react'
+import Link from 'next/link';
 
 const MainText = () => {
     const { data: session } = useSession();
@@ -16,12 +17,12 @@ const MainText = () => {
             {session && (
                 <>
                     <br className="max-md:hidden" />
-                    <span href="/downloads" className="blue_gradient text-center"> Start benching.</span>
+                    <Link href="/downloads" className="blue_gradient text-center"> Start benching.</Link>
                 </>
             )}
             <>
                 <br className="max-md:hidden" />
-                <span href="/view-prompts" className="orange_gradient text-center"> Discover.</span>
+                <Link href="/view-prompts" className="orange_gradient text-center"> Discover.</Link>
             </>
         </h1>
     )

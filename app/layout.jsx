@@ -2,6 +2,7 @@
 import '@styles/globals.css';
 import Nav from '@components/Nav';
 import Provider from '@components/Provider';
+import Footer from '@components/Footer';
 
 export const metedata = {
     title: 'Taipan Benchmarks',
@@ -21,6 +22,7 @@ const RootLayout = ({ children }) => {
                         <Nav />
                         {children}
                     </main>
+                    {/* <Footer /> */}
                 </Provider>
             </body>
         </html>

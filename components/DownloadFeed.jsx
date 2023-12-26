@@ -29,6 +29,17 @@ const DownloadFeed = () => {
                     file_name="prime_linux"
                     os_logo="linux"
                 />
+                <p className="desc text-center">
+                    If you are running Linux or MacOS, you will need to make the file executable. To do that, run the command in the terminal:
+                    <br />
+                    <br />
+                    <code>
+                        chmod +x prime_[file_name]
+                    </code>
+                    <br />
+                    <br />
+                    where <code>[file_name]</code> is the name of the file you downloaded.
+                </p>
             </div>
         </section>
     )

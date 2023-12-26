@@ -22,7 +22,8 @@ const BenchmarkCard = ({ post, handleTagClick }) => {
             <div className='flex justify-between items-start gap-5'>
                 <div className='flex flex-col'>
                     <h3 className='font-satoshi font-semibold text-gray-900'>
-                        {post.os_info}
+                        {/* Capitalize first letter */}
+                        {post.os_info.charAt(0).toUpperCase() + post.os_info.slice(1)}
                     </h3>
                     <p className='font-inter text-sm text-gray-500'>
                         {post.cpu_model}

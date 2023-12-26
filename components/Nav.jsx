@@ -60,14 +60,22 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
+                <div className="flex gap-3 md:gap-5">
+                  <Link href="/downloads" className="black_btn">
+                    Download
+                  </Link>
+                  <Link href="/view-prompts" className="black_btn">
+                    View Posts
+                  </Link>
+                  <button
+                    type="button"
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                    className="black_btn"
+                  >
+                    Sign In
+                  </button>
+                </div>
               ))}
           </>
         )}
@@ -131,14 +139,22 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
+                <div className="dropdown">
+                  <Link href="/downloads" className="dropdown_item">
+                    Download
+                  </Link>
+                  <Link href="/view-prompts" className="dropdown_item">
+                    View Posts
+                  </Link>
+                  <button
+                    type="button"
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                    className="black_btn"
+                  >
+                    Sign In
+                  </button>
+                </div>
               ))}
           </>
         )}

@@ -35,7 +35,7 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/downloads" className="black_btn">
-              Downloads
+              Download
             </Link>
             <Link href="/view-prompts" className="black_btn">
               View Posts

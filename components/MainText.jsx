@@ -16,12 +16,12 @@ const MainText = () => {
             {session && (
                 <>
                     <br className="max-md:hidden" />
-                    <span className="blue_gradient text-center"> Start benching.</span>
+                    <span href="/downloads" className="blue_gradient text-center"> Start benching.</span>
                 </>
             )}
             <>
                 <br className="max-md:hidden" />
-                <span className="orange_gradient text-center"> Discover.</span>
+                <span href="/view-prompts" className="orange_gradient text-center"> Discover.</span>
             </>
         </h1>
     )

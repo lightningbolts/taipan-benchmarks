@@ -22,12 +22,11 @@ const Download = ({ os, file_name, os_logo }) => {
     }
 
     return (
-        <a
+        <button
             onClick={saveFile}
-            href='/downloads'
             className="w-full black_btn mt-5 text-center">
             Download {os}
-        </a>
+        </button>
     )
 }
 

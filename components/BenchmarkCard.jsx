@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 
 const BenchmarkCard = ({ post, handleTagClick }) => {
     const { data: session } = useSession();
@@ -37,18 +38,10 @@ const BenchmarkCard = ({ post, handleTagClick }) => {
                     <p className='font-inter text-sm text-gray-500'>
                         Multi Core Score: {post.multi_core_score}
                     </p>
-                    <p className="font-inter text-sm text-gray-500">
-                        Speedup: {post.speedup}
-                    </p>
-                    <p className="font-inter text-sm text-gray-500">
-                        Efficiency: {post.efficiency}
-                    </p>
-                    <p className="font-inter text-sm text-gray-500">
-                        CPU Utilization: {post.cpu_utilization}
-                    </p>
-                    <p className="font-inter text-sm text-gray-500">
-                        Time: {post.time}
-                    </p>
+                    <a href={`/cpu-benchmarks/${post._id}`}
+                        className='font-inter text-sm text-blue-500'>
+                        View Full Benchmark
+                    </a>
 
                 </div>
                 {/* <div className='copy_btn' onClick={handleCopy}>

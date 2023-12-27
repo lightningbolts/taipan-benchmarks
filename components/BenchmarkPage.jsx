@@ -48,7 +48,7 @@ const BenchmarkPage = ({ benchmarkData }) => {
                 {benchmarkData.creator && (
                     <div>
                         <h2 className="text-lg font-bold mb-2">Creator</h2>
-                        <p>{benchmarkData.creator.id.name}</p>
+                        <p>{benchmarkData.creator.name}</p>
                     </div>
                 )}
             </div>

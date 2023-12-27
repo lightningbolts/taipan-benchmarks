@@ -12,17 +12,32 @@ const BenchmarkResult = ({ params }) => {
     const key = searchParams.get("key");
     // console.log(key)
     const [benchmarkData, setBenchmarkData] = useState([]);
+    const { data: session } = useSession();
+    console.log(session)
     // console.log(params)
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await fetch(`/api/cpu-benchmarks/${params?.id}?key=${key ? key : ""}}`);
+            const response = await fetch(`/api/cpu-benchmarks/${params?.id}`);
             const data = await response.json();
-
-            setBenchmarkData(data);
+            // console.log(data)
+            console.log(key, data.key)
+            if (session) {
+                if (key.toString() === data.key.toString()) {
+                    data.creator = session?.user?.id
+                    // console.log(data)
+                    const patchResponse = await fetch(`/api/cpu-benchmarks/${params?.id}?key=${key}`, {
+                        method: "PATCH",
+                        body: JSON.stringify({
+                            data: data
+                        }),
+                    })
+                }
+                setBenchmarkData(data);
+            }
         };
 
         if (params?.id) fetchPosts();
-    }, [params.id]);
+    }, [params.id, session?.user.id]);
 
 
     return (

@@ -45,6 +45,15 @@ const BenchSchema = new Schema({
         type: Number,
         required: [true, "Processes is required"],
     },
+    key: {
+        type: String,
+        required: [true, "Key is required"],
+    },
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: [false, "Creator is not required"],
+    },
 });
 
 const Bench = models.Bench || model("Bench", BenchSchema);

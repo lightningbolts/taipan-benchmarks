@@ -29,6 +29,9 @@ const BenchmarkCard = ({ post, handleTagClick }) => {
                         {post.cpu_model}
                     </p>
                     <p className='font-inter text-sm text-gray-500'>
+                        {post.processes} Cores
+                    </p>
+                    <p className='font-inter text-sm text-gray-500'>
                         Single Core Score: {post.single_core_score}
                     </p>
                     <p className='font-inter text-sm text-gray-500'>

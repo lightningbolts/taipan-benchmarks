@@ -41,6 +41,10 @@ const BenchSchema = new Schema({
         type: String,
         required: [true, "Host name is required"],
     },
+    processes: {
+        type: Number,
+        required: [true, "Processes is required"],
+    },
 });
 
 const Bench = models.Bench || model("Bench", BenchSchema);

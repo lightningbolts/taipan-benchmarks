@@ -6,14 +6,17 @@ export const PATCH = async (request, { params }) => {
     try {
         await connectToDatabase();
         const existingBench = await Bench.findById(params.id);
+        // console.log(existingBench, "existingBench");
+        // console.log(params, "params");
         if (!existingBench) {
             return new Response("Benchmark not found", { status: 404 });
         }
+        // console.log(existingBench.key, "existingBench.key")
         // Check if user is logged in
-        const { data: session, status } = await useSession();
+        const session = await useSession();
         // If user is logged in and the key in the url matches the benchmark key, update the benchmark
-        if (status === 200 && session && params.key === existingBench.key) {
-            existingBench.user = session.user.name;
+        if (session && params.key === existingBench.key) {
+            existingBench.user = session.user.id;
         } else {
             return new Response("Unauthorized", { status: 401 });
         }

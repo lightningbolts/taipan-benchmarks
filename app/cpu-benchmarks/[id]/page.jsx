@@ -23,7 +23,7 @@ const BenchmarkResult = ({ params }) => {
             // console.log(data)
             setBenchmarkData(data);
             console.log(key, data.key);
-            if (session && data.hostname && !/^[0-9a-fA-F]{24}$/.test(data.hostname)) {
+            if (session && data.hostname && !/^[0-9a-fA-F]+$/.test(data.hostname)) {
                 if (key && key.toString() === data.key.toString()) {
                     data.hostname = session?.user?.id;
                     // console.log(data, "data");

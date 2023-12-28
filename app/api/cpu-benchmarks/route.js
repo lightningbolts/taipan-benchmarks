@@ -15,7 +15,6 @@ export const POST = async (request, res) => {
     const bench = await request.json();
     try {
         await connectToDatabase();
-        bench.creator = "";
         const newBench = await Bench.create(bench);
         await newBench.save();
         return new Response(JSON.stringify(newBench), { status: 201 });

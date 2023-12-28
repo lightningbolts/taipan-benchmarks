@@ -1,5 +1,10 @@
 import React from 'react';
-
+import { useState } from "react"
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { set } from "mongoose";
 const BenchmarkPage = ({ benchmarkData }) => {
 
     return (
@@ -46,12 +51,12 @@ const BenchmarkPage = ({ benchmarkData }) => {
                     <h2 className="text-lg font-bold mb-2">Creator</h2>
                     <p>{benchmarkData.hostname}</p>
                 </div>
-                {benchmarkData.hostname && (
+                {/* {benchmarkData.hostname && (
                     <div>
                         <h2 className="text-lg font-bold mb-2">Creator Name</h2>
                         <p>{benchmarkData.hostname}</p>
                     </div>
-                )}
+                )} */}
             </div>
         </div>
     );

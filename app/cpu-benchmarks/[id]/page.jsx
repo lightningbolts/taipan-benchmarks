@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import BenchmarkPage from "@components/BenchmarkPage";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { set } from "mongoose";
 
 const BenchmarkResult = ({ params }) => {
     const searchParams = useSearchParams();
@@ -20,11 +21,12 @@ const BenchmarkResult = ({ params }) => {
             const response = await fetch(`/api/cpu-benchmarks/${params?.id}`);
             const data = await response.json();
             // console.log(data)
+            setBenchmarkData(data);
             console.log(key, data.key)
             if (session) {
                 if (key && key.toString() === data.key.toString()) {
                     data.hostname = session?.user?.id
-                    // console.log(data)
+                    // console.log(data, "data")
                     const patchResponse = await fetch(`/api/cpu-benchmarks/${params?.id}?key=${key}`, {
                         method: "PATCH",
                         body: JSON.stringify({

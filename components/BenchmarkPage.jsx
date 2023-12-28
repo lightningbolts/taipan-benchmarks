@@ -1,6 +1,7 @@
 import React from 'react';
 
 const BenchmarkPage = ({ benchmarkData }) => {
+
     return (
         <div className="container mx-auto">
             <h1 className="text-2xl font-bold mb-4">Benchmark Results</h1>
@@ -42,13 +43,13 @@ const BenchmarkPage = ({ benchmarkData }) => {
                     <p>{benchmarkData.time}</p>
                 </div>
                 <div>
-                    <h2 className="text-lg font-bold mb-2">Hostname</h2>
+                    <h2 className="text-lg font-bold mb-2">Creator</h2>
                     <p>{benchmarkData.hostname}</p>
                 </div>
-                {benchmarkData.hostname.name && (
+                {benchmarkData.hostname && (
                     <div>
-                        <h2 className="text-lg font-bold mb-2">Creator</h2>
-                        <p>{benchmarkData.hostname.name}</p>
+                        <h2 className="text-lg font-bold mb-2">Creator Name</h2>
+                        <p>{benchmarkData.hostname}</p>
                     </div>
                 )}
             </div>

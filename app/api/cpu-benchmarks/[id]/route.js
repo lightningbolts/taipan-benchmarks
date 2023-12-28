@@ -21,7 +21,9 @@ export const PATCH = async (request, { params }) => {
     try {
         await connectToDatabase();
         console.log("existingBench", existingBench);
-        const newBenchmark = await Bench.create(existingBench);
+        // Update benchmark
+        const newBenchmark = await Bench.findByIdAndUpdate(params.id, existingBench, { new: true });
+        console.log("newBenchmark", newBenchmark);
         await newBenchmark.save();
         return new Response(JSON.stringify(newBenchmark), { status: 200 });
     } catch (error) {

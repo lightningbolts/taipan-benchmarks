@@ -45,10 +45,10 @@ const BenchmarkPage = ({ benchmarkData }) => {
                     <h2 className="text-lg font-bold mb-2">Hostname</h2>
                     <p>{benchmarkData.hostname}</p>
                 </div>
-                {benchmarkData.creator && (
+                {benchmarkData.hostname.name && (
                     <div>
                         <h2 className="text-lg font-bold mb-2">Creator</h2>
-                        <p>{benchmarkData.creator.name}</p>
+                        <p>{benchmarkData.hostname.name}</p>
                     </div>
                 )}
             </div>

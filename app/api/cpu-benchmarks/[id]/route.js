@@ -17,9 +17,7 @@ export const GET = async (request, { params }) => {
 }
 
 export const PATCH = async (request, { params }) => {
-    const { cpu_model, os_info, digits, single_core_score, multi_core_score,
-        speedup, efficiency, cpu_utilization, time, hostname, processes, key
-    } = await request.json();
+    const { cpu_model, os_info, digits, single_core_score, multi_core_score, speedup, efficiency, cpu_utilization, time, hostname, processes, key, creator } = await request.json();
     try {
         await connectToDatabase();
         const benchmark = await Bench.findById(params.id);
@@ -38,6 +36,7 @@ export const PATCH = async (request, { params }) => {
         benchmark.hostname = hostname;
         benchmark.processes = processes;
         benchmark.key = key;
+        benchmark.creator = creator;
         const newBenchmark = await benchmark.save();
         return new Response(JSON.stringify(newBenchmark), { status: 200 });
     } catch (error) {

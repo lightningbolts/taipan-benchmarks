@@ -11,7 +11,6 @@ export const GET = async (request) => {
 }
 
 export const POST = async (request, res) => {
-    // const { cpu_model, os_info, digits, single_core_score, multi_core_score, speedup, efficiency, cpu_utilization, time, hostname } = await request.json();
     const bench = await request.json();
     try {
         await connectToDatabase();

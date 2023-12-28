@@ -6,6 +6,7 @@ import BenchmarkPage from "@components/BenchmarkPage";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { set } from "mongoose";
+import { ObjectId } from "mongodb";
 
 const BenchmarkResult = ({ params }) => {
     const searchParams = useSearchParams();
@@ -23,9 +24,9 @@ const BenchmarkResult = ({ params }) => {
             // console.log(data)
             setBenchmarkData(data);
             console.log(key, data.key);
-            if (session && data.hostname && !/^[0-9a-fA-F]+$/.test(data.hostname)) {
+            if (session && data.creator === ObjectId('658456be6e23241d7bfd4160')) {
                 if (key && key.toString() === data.key.toString()) {
-                    data.hostname = session?.user?.id;
+                    data.creator = ObjectId(`${session?.user?.id}`);
                     // console.log(data, "data");
                     const patchResponse = await fetch(`/api/cpu-benchmarks/${params?.id}?key=${key}`, {
                         method: "PATCH",

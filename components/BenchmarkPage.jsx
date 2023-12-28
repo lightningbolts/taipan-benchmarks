@@ -48,7 +48,7 @@ const BenchmarkPage = ({ benchmarkData }) => {
                     <p>{benchmarkData.time}</p>
                 </div>
                 <div>
-                    <h2 className="text-lg font-bold mb-2">Creator</h2>
+                    <h2 className="text-lg font-bold mb-2">Hostname</h2>
                     <p>{benchmarkData.hostname}</p>
                 </div>
                 {/* {benchmarkData.hostname && (

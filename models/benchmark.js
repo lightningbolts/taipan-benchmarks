@@ -51,8 +51,7 @@ const BenchSchema = new Schema({
     },
     creator: {
         type: Schema.Types.ObjectId,
-        ref: "User",
-        required: [false, "Creator is not required"],
+        required: [true, "Creator is required"],
     },
 });
 

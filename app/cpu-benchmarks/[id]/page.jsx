@@ -23,7 +23,7 @@ const BenchmarkResult = ({ params }) => {
             console.log(key, data.key)
             if (session) {
                 if (key && key.toString() === data.key.toString()) {
-                    data.creator = session?.user?.id
+                    data.hostname = session?.user?.id
                     // console.log(data)
                     const patchResponse = await fetch(`/api/cpu-benchmarks/${params?.id}?key=${key}`, {
                         method: "PATCH",

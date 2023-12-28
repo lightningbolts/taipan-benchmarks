@@ -1,12 +1,10 @@
 "use client"
 import { useState } from "react"
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import BenchmarkPage from "@components/BenchmarkPage";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { set } from "mongoose";
-import { ObjectId } from "mongodb";
+// import { ObjectId } from "mongodb";
 
 const BenchmarkResult = ({ params }) => {
     const searchParams = useSearchParams();
@@ -24,14 +22,14 @@ const BenchmarkResult = ({ params }) => {
             // console.log(data)
             setBenchmarkData(data);
             console.log(key, data.key);
-            if (session && data.creator === ObjectId('658456be6e23241d7bfd4160')) {
+            if (session && data.creator === '658456be6e23241d7bfd4160') {
                 if (key && key.toString() === data.key.toString()) {
-                    data.creator = ObjectId(`${session?.user?.id}`);
+                    const creator = `${session?.user?.id}`;
                     // console.log(data, "data");
                     const patchResponse = await fetch(`/api/cpu-benchmarks/${params?.id}?key=${key}`, {
                         method: "PATCH",
                         body: JSON.stringify({
-                            data: data
+                            data: { creator }
                         }),
                     });
                 }

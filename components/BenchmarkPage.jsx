@@ -51,12 +51,12 @@ const BenchmarkPage = ({ benchmarkData }) => {
                     <h2 className="text-lg font-bold mb-2">Hostname</h2>
                     <p>{benchmarkData.hostname}</p>
                 </div>
-                {/* {benchmarkData.hostname && (
+                {benchmarkData.creator && (
                     <div>
                         <h2 className="text-lg font-bold mb-2">Creator Name</h2>
-                        <p>{benchmarkData.hostname}</p>
+                        <p>{benchmarkData.creator.username}</p>
                     </div>
-                )} */}
+                )}
             </div>
         </div>
     );

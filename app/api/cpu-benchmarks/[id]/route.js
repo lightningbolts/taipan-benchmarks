@@ -6,7 +6,7 @@ export const GET = async (request, { params }) => {
         const searchParams = request.nextUrl.searchParams;
         const keyParam = searchParams.get("key");
         await connectToDatabase();
-        const bench = await Bench.findById(params.id).populate("creator");
+        const bench = await Bench.findById(params.id);
         if (!bench) {
             return new Response("Benchmark not found", { status: 404 });
         }

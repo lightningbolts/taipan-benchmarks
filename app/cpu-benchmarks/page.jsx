@@ -72,41 +72,39 @@ const Page = () => {
     console.log(calculateAverageSingleCoreScore());
     console.log(calculateAverageMultiCoreScore());
 
-    // Create two charts, one for single core scores and one for multi core scores
-    // const chartData = {
-    //     labels: Object.keys(calculateAverageSingleCoreScore()),
-    //     datasets: [
-    //         {
-    //             label: 'Single Core Score',
-    //             data: Object.values(calculateAverageSingleCoreScore()),
-    //             backgroundColor: 'rgba(75, 192, 192, 0.6)',
-    //             borderWidth: 4,
-    //         },
-    //         {
-    //             label: 'Multi Core Score',
-    //             data: Object.values(calculateAverageMultiCoreScore()),
-    //             backgroundColor: 'rgba(153, 102, 255, 0.6)',
-    //             borderWidth: 4,
-    //         },
-    //     ],
-    // };
-
-    // Chart.register(CategoryScale, Bar);
-
+    // Create two datasets from the average scores
     const state = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: Object.keys(calculateAverageSingleCoreScore()),
         datasets: [
             {
-                label: 'My First dataset',
+                label: 'Single Core Score',
                 backgroundColor: 'rgba(255,99,132,0.2)',
                 borderColor: 'rgba(255,99,132,1)',
                 borderWidth: 1,
                 hoverBackgroundColor: 'rgba(255,99,132,0.4)',
                 hoverBorderColor: 'rgba(255,99,132,1)',
-                data: [65, 59, 80, 81, 56, 55, 40]
+                data: Object.values(calculateAverageSingleCoreScore())
+            },
+            {
+                label: 'Multi Core Score',
+                backgroundColor: 'rgba(255,99,132,0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+                hoverBorderColor: 'rgba(255,99,132,1)',
+                data: Object.values(calculateAverageMultiCoreScore())
             }
-        ]
+        ],
+        options: {
+            indexAxis: 'y',
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     }
+
 
     // Register the chart components
     Chart.register(

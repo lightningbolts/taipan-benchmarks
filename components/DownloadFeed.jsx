@@ -10,22 +10,22 @@ const DownloadFeed = () => {
         <section className="feed">
             <div className="feed_container">
                 <Download
-                    os="Windows"
+                    os="Windows 10 or 11"
                     file_name="prime_windows.exe"
                     os_logo="windows"
                 />
                 <Download
-                    os="Mac (Arm)"
+                    os="MacOS (Arm)"
                     file_name="prime_macos_arm"
                     os_logo="apple"
                 />
                 <Download
-                    os="Mac (Intel)"
+                    os="MacOS (Intel)"
                     file_name="prime_macos_intel"
                     os_logo="apple"
                 />
                 <Download
-                    os="Linux"
+                    os="Linux (Debian)"
                     file_name="prime_linux"
                     os_logo="linux"
                 />

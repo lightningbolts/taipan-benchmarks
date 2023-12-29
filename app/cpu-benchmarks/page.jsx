@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart, CategoryScale, LinearScale, BarController } from 'chart.js';
+import { Chart, CategoryScale, LinearScale, BarController, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
 const Page = () => {
     const [cpuScores, setCpuScores] = useState([]);
@@ -73,30 +73,56 @@ const Page = () => {
     console.log(calculateAverageMultiCoreScore());
 
     // Create two charts, one for single core scores and one for multi core scores
-    const chartData = {
-        labels: Object.keys(calculateAverageSingleCoreScore()),
+    // const chartData = {
+    //     labels: Object.keys(calculateAverageSingleCoreScore()),
+    //     datasets: [
+    //         {
+    //             label: 'Single Core Score',
+    //             data: Object.values(calculateAverageSingleCoreScore()),
+    //             backgroundColor: 'rgba(75, 192, 192, 0.6)',
+    //             borderWidth: 4,
+    //         },
+    //         {
+    //             label: 'Multi Core Score',
+    //             data: Object.values(calculateAverageMultiCoreScore()),
+    //             backgroundColor: 'rgba(153, 102, 255, 0.6)',
+    //             borderWidth: 4,
+    //         },
+    //     ],
+    // };
+
+    // Chart.register(CategoryScale, Bar);
+
+    const state = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [
             {
-                label: 'Single Core Score',
-                data: Object.values(calculateAverageSingleCoreScore()),
-                backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                borderWidth: 4,
-            },
-            {
-                label: 'Multi Core Score',
-                data: Object.values(calculateAverageMultiCoreScore()),
-                backgroundColor: 'rgba(153, 102, 255, 0.6)',
-                borderWidth: 4,
-            },
-        ],
-    };
+                label: 'My First dataset',
+                backgroundColor: 'rgba(255,99,132,0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+                hoverBorderColor: 'rgba(255,99,132,1)',
+                data: [65, 59, 80, 81, 56, 55, 40]
+            }
+        ]
+    }
 
-    Chart.register(CategoryScale, Bar);
+    // Register the chart components
+    Chart.register(
+        CategoryScale,
+        LinearScale,
+        BarController,
+        BarElement,
+        Title,
+        Tooltip,
+        Legend
+    );
 
     return (
         <div>
             <h1>Average CPU Score:</h1>
-            <Bar data={chartData} />
+            <Bar data={state} />
         </div>
     );
 };

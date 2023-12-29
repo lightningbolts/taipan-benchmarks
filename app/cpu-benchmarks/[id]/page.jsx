@@ -21,20 +21,6 @@ const BenchmarkResult = ({ params }) => {
             const data = await response.json();
             // console.log(data)
             setBenchmarkData(data);
-            console.log(key, data.key);
-            if (session && data.creator === '658456be6e23241d7bfd4160') {
-                if (key && key.toString() === data.key.toString()) {
-                    const creator = `${session?.user?.id}`;
-                    // console.log(data, "data");
-                    const patchResponse = await fetch(`/api/cpu-benchmarks/${params?.id}?key=${key}`, {
-                        method: "PATCH",
-                        body: JSON.stringify({
-                            data: { creator }
-                        }),
-                    });
-                }
-                setBenchmarkData(data);
-            }
         };
 
         if (params?.id) fetchPosts();

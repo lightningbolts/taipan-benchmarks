@@ -6,50 +6,49 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { set } from "mongoose";
 const BenchmarkPage = ({ benchmarkData }) => {
+    // Check if benchmarkData.cpu has Intel or AMD
+    // If Intel, show Intel logo
+    // If AMD, show AMD logo
 
     return (
-        <div className="container mx-auto">
-            <h1 className="text-2xl font-bold mb-4">Benchmark Results</h1>
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <h2 className="text-lg font-bold mb-2">CPU Model</h2>
-                    <p>{benchmarkData.cpu_model}</p>
+        <div className="container px-4">
+            <h1 className="head_text text-left black">Benchmark Results</h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div className="flex flex-wrap -mx-4 -mb-10 text-left">
+                <div className="sm:w-1/2 mb-10 px-4">
+                    <div className="rounded-lg h-64 overflow-hidden">
+                        <h1 className="text-2xl font-bold mb-4">Single Core Score</h1>
+                        <h1 className="head_text black_gradient">{benchmarkData.single_core_score}</h1>
+                    </div>
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">CPU Model</h2>
+                    <p className="leading-relaxed text-base">{benchmarkData.cpu_model}</p>
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Cores</h2>
+                    <p className="leading-relaxed text-base">{benchmarkData.processes}</p>
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Speedup</h2>
+                    <p className="leading-relaxed text-base">{benchmarkData.speedup}</p>
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Efficiency</h2>
+                    <p className="leading-relaxed text-base">{benchmarkData.efficiency}</p>
+
                 </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">OS Info</h2>
-                    <p>{benchmarkData.os_info}</p>
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Cores</h2>
-                    <p>{benchmarkData.processes}</p>
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Single Core Score</h2>
-                    <p>{benchmarkData.single_core_score}</p>
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Multi Core Score</h2>
-                    <p>{benchmarkData.multi_core_score}</p>
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Speedup</h2>
-                    <p>{benchmarkData.speedup}</p>
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Efficiency</h2>
-                    <p>{benchmarkData.efficiency}</p>
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">CPU Utilization</h2>
-                    <p>{benchmarkData.cpu_utilization}</p>
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Time</h2>
-                    <p>{benchmarkData.time}</p>
-                </div>
-                <div>
-                    <h2 className="text-lg font-bold mb-2">Hostname</h2>
-                    <p>{benchmarkData.hostname}</p>
+                <div className="sm:w-1/2 mb-10 px-4">
+                    <div className="rounded-lg h-64 overflow-hidden">
+                        <div className="rounded-lg h-64 overflow-hidden">
+                            <h1 className="text-2xl font-bold mb-4">Multi Core Score</h1>
+                            <h1 className="head_text black_gradient">{benchmarkData.multi_core_score}</h1>
+                        </div>
+                    </div>
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Operating System</h2>
+                    <p className="leading-relaxed text-base">{benchmarkData.os_info}</p>
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">CPU Utilization</h2>
+                    <p className="leading-relaxed text-base">{benchmarkData.cpu_utilization}</p>
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Time</h2>
+                    <p className="leading-relaxed text-base">{benchmarkData.time}</p>
+                    <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Hostname</h2>
+                    <p className="leading-relaxed text-base">{benchmarkData.hostname}</p>
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@ const Nav = () => {
               Download
             </Link>
             <Link href="/cpu-benchmarks" className="black_btn">
-              View CPU Benchmark results
+              View Results
             </Link>
             <Link href="/view-prompts" className="black_btn">
               View Posts

@@ -5,6 +5,11 @@ import { Chart, CategoryScale, LinearScale, BarController, BarElement, Title, To
 
 const Page = () => {
     const [cpuScores, setCpuScores] = useState([]);
+    const [isSingleCore, setIsSingleCore] = useState(true);
+
+    const handleDropdownChange = (event) => {
+        setIsSingleCore(event.target.value === 'single');
+    };
 
     useEffect(() => {
         // Fetch CPU scores from an API or database
@@ -69,42 +74,106 @@ const Page = () => {
         return averageScores;
     }
 
+    // Get all the CPU models
+    const cpuModels = Object.keys(calculateAverageSingleCoreScore());
+    // Get all the average single core scores
+    const singleCoreScores = Object.values(calculateAverageSingleCoreScore());
+    // Get all the average multi core scores
+    const multiCoreScores = Object.values(calculateAverageMultiCoreScore());
+
+    // Sort the CPU models from highest to lowest average single core score
+    cpuModels.sort((a, b) => calculateAverageSingleCoreScore()[b] - calculateAverageSingleCoreScore()[a]);
+    // Sort the average single core scores from highest to lowest
+    singleCoreScores.sort((a, b) => b - a);
+    // Sort the average multi core scores from highest to lowest
+    multiCoreScores.sort((a, b) => b - a);
+
     console.log(calculateAverageSingleCoreScore());
     console.log(calculateAverageMultiCoreScore());
 
     // Create two datasets from the average scores
-    const state = {
-        labels: Object.keys(calculateAverageSingleCoreScore()),
-        datasets: [
-            {
-                label: 'Single Core Score',
-                backgroundColor: 'rgba(255,99,132,0.2)',
-                borderColor: 'rgba(255,99,132,1)',
-                borderWidth: 1,
-                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-                hoverBorderColor: 'rgba(255,99,132,1)',
-                data: Object.values(calculateAverageSingleCoreScore())
-            },
-            {
-                label: 'Multi Core Score',
-                backgroundColor: 'rgba(255,99,132,0.2)',
-                borderColor: 'rgba(255,99,132,1)',
-                borderWidth: 1,
-                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-                hoverBorderColor: 'rgba(255,99,132,1)',
-                data: Object.values(calculateAverageMultiCoreScore())
-            }
-        ],
+    const labels = cpuModels;
+    const data = {
+        labels: labels,
+        datasets: [{
+            axis: 'y',
+            label: 'Single Core Scores',
+            data: singleCoreScores,
+            fill: false,
+            backgroundColor: singleCoreScores.map((score, index) => {
+                const cpuModel = labels[index];
+                if (cpuModel.includes('Intel')) {
+                    return 'rgba(54, 162, 235, 0.2)';
+                } else if (cpuModel.includes('AMD')) {
+                    return 'rgba(255, 99, 132, 0.2)';
+                } else if (cpuModel.includes('Apple')) {
+                    return 'rgba(0, 0, 0, 0.2)';
+                }
+                return 'rgba(0, 0, 0, 0.2)'; // Default color
+            }),
+            borderColor: singleCoreScores.map((score, index) => {
+                const cpuModel = labels[index];
+                if (cpuModel.includes('Intel')) {
+                    return 'rgb(54, 162, 235)';
+                } else if (cpuModel.includes('AMD')) {
+                    return 'rgb(255, 99, 132)';
+                } else if (cpuModel.includes('Apple')) {
+                    return 'rgb(0, 0, 0)';
+                }
+                return 'rgb(0, 0, 0)'; // Default color
+            }),
+            borderWidth: 1
+        }]
+    };
+
+    const config = {
+        type: 'bar',
+        data,
         options: {
             indexAxis: 'y',
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
         }
-    }
+    };
 
+    const data2 = {
+        labels: labels,
+        datasets: [{
+            axis: 'y',
+            label: 'Multi Core Scores',
+            data: multiCoreScores,
+            fill: false,
+            backgroundColor: multiCoreScores.map((score, index) => {
+                const cpuModel = labels[index];
+                if (cpuModel.includes('Intel')) {
+                    return 'rgba(54, 162, 235, 0.2)';
+                } else if (cpuModel.includes('AMD')) {
+                    return 'rgba(255, 99, 132, 0.2)';
+                } else if (cpuModel.includes('Apple')) {
+                    return 'rgba(0, 0, 0, 0.2)';
+                }
+                return 'rgba(0, 0, 0, 0.2)'; // Default color
+            }),
+            borderColor: multiCoreScores.map((score, index) => {
+                const cpuModel = labels[index];
+                if (cpuModel.includes('Intel')) {
+                    return 'rgb(54, 162, 235)';
+                } else if (cpuModel.includes('AMD')) {
+                    return 'rgb(255, 99, 132)';
+                } else if (cpuModel.includes('Apple')) {
+                    return 'rgb(0, 0, 0)';
+                }
+                return 'rgb(0, 0, 0)'; // Default color
+            }),
+            borderWidth: 1
+        }]
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+            indexAxis: 'y',
+        }
+    };
 
     // Register the chart components
     Chart.register(
@@ -119,8 +188,38 @@ const Page = () => {
 
     return (
         <div>
-            <h1>Average CPU Score:</h1>
-            <Bar data={state} />
+            <h1 className='head_text text-center blue_gradient'>
+                CPU Benchmark Results
+                <br className='max-md:hidden' />
+                <span className='orange_gradient text-center'>
+                    {' '}
+                    Right now.
+                </span>
+            </h1>
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div style={{ width: '100%', height: '50px', borderRadius: '10px', backgroundColor: '#f2f2f2', textAlign: 'center' }}>
+                <select onChange={handleDropdownChange} style={{ width: '100%', height: '50px', borderRadius: '10px', backgroundColor: '#f2f2f2', fontSize: 'large' }} className='text-center '>
+                    <option value="single" className='text-center blue_gradient option-style'>Single Core</option>
+                    <option value="multi" className='text-center blue_gradient option-style'>Multi Core</option>
+                </select>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            {isSingleCore ? (
+                <div style={{ width: '100%', height: '100vh' }}>
+                    <Bar {...config} className='' style={{ width: '100%', height: '100%' }} />
+                </div>
+            ) : (
+                <div style={{ width: '100%', height: '100vh' }}>
+                    <Bar {...config2} className='' style={{ width: '100%', height: '100%' }} />
+                </div>
+            )}
         </div>
     );
 };

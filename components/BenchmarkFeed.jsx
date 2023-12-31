@@ -42,7 +42,8 @@ const Feed = () => {
             (item) =>
                 regex.test(item.cpu_model) ||
                 regex.test(item.os_info) ||
-                regex.test(item.time)
+                regex.test(item.time) ||
+                regex.test(item.hostname)
         );
     };
 

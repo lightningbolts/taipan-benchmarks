@@ -97,7 +97,7 @@ const Page = () => {
         labels: labels,
         datasets: [{
             axis: 'y',
-            label: 'Single Core Scores',
+            label: 'Single Core Score',
             data: singleCoreScores,
             fill: false,
             backgroundColor: singleCoreScores.map((score, index) => {
@@ -138,7 +138,7 @@ const Page = () => {
         labels: labels,
         datasets: [{
             axis: 'y',
-            label: 'Multi Core Scores',
+            label: 'Multi Core Score',
             data: multiCoreScores,
             fill: false,
             backgroundColor: multiCoreScores.map((score, index) => {

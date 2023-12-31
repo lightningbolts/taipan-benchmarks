@@ -115,6 +115,13 @@ const Nav = () => {
                   Downloads
                 </Link>
                 <Link
+                  href="/cpu-benchmarks"
+                  className="dropdown_item"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  View Results
+                </Link>
+                <Link
                   href="/view-prompts"
                   className="dropdown_item"
                   onClick={() => setToggleDropdown(false)}
@@ -145,22 +152,14 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) => (
-                <div className="dropdown">
-                  <Link href="/downloads" className="dropdown_item">
-                    Download
-                  </Link>
-                  <Link href="/view-prompts" className="dropdown_item">
-                    View Posts
-                  </Link>
-                  <button
-                    type="button"
-                    key={provider.name}
-                    onClick={() => signIn(provider.id)}
-                    className="black_btn"
-                  >
-                    Sign In
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  key={provider.name}
+                  onClick={() => signIn(provider.id)}
+                  className="black_btn"
+                >
+                  Sign In
+                </button>
               ))}
           </>
         )}

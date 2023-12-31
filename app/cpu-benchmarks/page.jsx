@@ -76,29 +76,24 @@ const Page = () => {
 
     // Get all the CPU models
     const cpuModels = Object.keys(calculateAverageSingleCoreScore());
+    const cpuModels2 = Object.keys(calculateAverageMultiCoreScore());
     // Get all the average single core scores
     const singleCoreScores = Object.values(calculateAverageSingleCoreScore());
     // Get all the average multi core scores
     const multiCoreScores = Object.values(calculateAverageMultiCoreScore());
-
-    // Sort the CPU models from highest to lowest average single core score
-    cpuModels.sort((a, b) => calculateAverageSingleCoreScore()[b] - calculateAverageSingleCoreScore()[a]);
-    // Sort the average single core scores from highest to lowest
-    singleCoreScores.sort((a, b) => b - a);
-    // Sort the average multi core scores from highest to lowest
-    multiCoreScores.sort((a, b) => b - a);
 
     // console.log(calculateAverageSingleCoreScore());
     // console.log(calculateAverageMultiCoreScore());
 
     // Create two datasets from the average scores
     const labels = cpuModels;
+    const labels2 = cpuModels2;
     const data = {
-        labels: labels,
+        labels: cpuModels.sort((a, b) => calculateAverageSingleCoreScore()[b] - calculateAverageSingleCoreScore()[a]),
         datasets: [{
             axis: 'y',
             label: 'Single Core Score',
-            data: singleCoreScores,
+            data: singleCoreScores.sort((a, b) => b - a),
             fill: false,
             backgroundColor: singleCoreScores.map((score, index) => {
                 const cpuModel = labels[index];
@@ -135,14 +130,14 @@ const Page = () => {
     };
 
     const data2 = {
-        labels: labels,
+        labels: cpuModels2.sort((a, b) => calculateAverageMultiCoreScore()[b] - calculateAverageMultiCoreScore()[a]),
         datasets: [{
             axis: 'y',
             label: 'Multi Core Score',
-            data: multiCoreScores,
+            data: multiCoreScores.sort((a, b) => b - a),
             fill: false,
             backgroundColor: multiCoreScores.map((score, index) => {
-                const cpuModel = labels[index];
+                const cpuModel = labels2[index];
                 if (cpuModel.includes('Intel')) {
                     return 'rgba(54, 162, 235, 0.2)';
                 } else if (cpuModel.includes('AMD')) {
@@ -153,7 +148,7 @@ const Page = () => {
                 return 'rgba(0, 0, 0, 0.2)'; // Default color
             }),
             borderColor: multiCoreScores.map((score, index) => {
-                const cpuModel = labels[index];
+                const cpuModel = labels2[index];
                 if (cpuModel.includes('Intel')) {
                     return 'rgb(54, 162, 235)';
                 } else if (cpuModel.includes('AMD')) {

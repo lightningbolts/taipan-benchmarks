@@ -39,7 +39,7 @@ const DownloadFeed = () => {
                     <br />
                     <br />
                     <code>
-                        chmod +x prime_[file_name]
+                        chmod +x [file_name]
                     </code>
                     <br />
                     <br />

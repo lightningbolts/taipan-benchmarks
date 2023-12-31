@@ -11,23 +11,28 @@ const DownloadFeed = () => {
             <div className="feed_container">
                 <Download
                     os="Windows 10 or 11"
-                    file_name="prime_windows.exe"
+                    file_name="primepoint_windows.exe"
                     os_logo="windows"
                 />
                 <Download
                     os="MacOS (Arm)"
-                    file_name="prime_macos_arm"
+                    file_name="primepoint_macos_arm"
                     os_logo="apple"
                 />
                 <Download
                     os="MacOS (Intel)"
-                    file_name="prime_macos_intel"
+                    file_name="primepoint_macos_intel"
                     os_logo="apple"
                 />
                 <Download
                     os="Linux (Debian)"
-                    file_name="prime_linux"
-                    os_logo="linux"
+                    file_name="primepoint_linux_debian"
+                    os_logo="ubuntu"
+                />
+                <Download
+                    os="Linux (Arch)"
+                    file_name="primepoint_linux_arch"
+                    os_logo="archlinux"
                 />
                 <p className="desc text-center">
                     If you are running Linux or MacOS, you will need to make the file executable. To do that, run the command in the terminal:

@@ -88,8 +88,8 @@ const Page = () => {
     // Sort the average multi core scores from highest to lowest
     multiCoreScores.sort((a, b) => b - a);
 
-    console.log(calculateAverageSingleCoreScore());
-    console.log(calculateAverageMultiCoreScore());
+    // console.log(calculateAverageSingleCoreScore());
+    // console.log(calculateAverageMultiCoreScore());
 
     // Create two datasets from the average scores
     const labels = cpuModels;

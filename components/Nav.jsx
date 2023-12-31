@@ -67,6 +67,9 @@ const Nav = () => {
                   <Link href="/downloads" className="black_btn">
                     Download
                   </Link>
+                  <Link href="/cpu-benchmarks" className="black_btn">
+                    View Results
+                  </Link>
                   <Link href="/view-prompts" className="black_btn">
                     View Posts
                   </Link>

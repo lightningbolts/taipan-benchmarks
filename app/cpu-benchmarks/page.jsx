@@ -7,9 +7,16 @@ const Page = () => {
     const [cpuScores, setCpuScores] = useState([]);
     const [isSingleCore, setIsSingleCore] = useState(true);
 
-    const handleDropdownChange = (event) => {
-        setIsSingleCore(event.target.value === 'single');
-    };
+    const [activeTab, setActiveTab] = useState('single');
+
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+        if (tab === 'single') {
+            setIsSingleCore(true);
+        } else {
+            setIsSingleCore(false);
+        }
+    }
 
     useEffect(() => {
         // Fetch CPU scores from an API or database
@@ -196,11 +203,15 @@ const Page = () => {
             <br />
             <br />
 
-            <div style={{ width: '100%', height: '50px', borderRadius: '10px', backgroundColor: '#f2f2f2', textAlign: 'center' }}>
-                <select onChange={handleDropdownChange} style={{ width: '100%', height: '50px', borderRadius: '10px', backgroundColor: '#f2f2f2', fontSize: 'large' }} className='text-center '>
-                    <option value="single" className='text-center blue_gradient option-style'>Single Core</option>
-                    <option value="multi" className='text-center blue_gradient option-style'>Multi Core</option>
-                </select>
+            <div>
+                <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center', height: '100%' }}>
+                    <button onClick={() => handleTabChange('single')} className={`text-center black_btn  ${activeTab === 'single' ? 'active-tab' : ''}`} style={{ marginRight: '10px' }}>
+                        Single Core
+                    </button>
+                    <button onClick={() => handleTabChange('multi')} className={`text-center black_btn  ${activeTab === 'multi' ? 'active-tab' : ''}`}>
+                        Multi Core
+                    </button>
+                </div>
             </div>
             <br />
             <br />

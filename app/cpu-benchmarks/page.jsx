@@ -2,19 +2,57 @@
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, BarController, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { set } from 'mongoose';
 
 const Page = () => {
     const [cpuScores, setCpuScores] = useState([]);
     const [isSingleCore, setIsSingleCore] = useState(true);
-
+    const [isMultiCore, setIsMultiCore] = useState(false);
+    const [isApple, setIsApple] = useState(false);
+    const [isIntel, setIsIntel] = useState(false);
+    const [isAMD, setIsAMD] = useState(false);
+    const [isWindows, setIsWindows] = useState(false);
+    const [isMacOS, setIsMacOS] = useState(false);
+    const [isLinux, setIsLinux] = useState(false);
     const [activeTab, setActiveTab] = useState('single');
+
+    const setAllFalse = () => {
+        setIsSingleCore(false);
+        setIsMultiCore(false);
+        setIsApple(false);
+        setIsIntel(false);
+        setIsAMD(false);
+        setIsWindows(false);
+        setIsMacOS(false);
+        setIsLinux(false);
+    }
 
     const handleTabChange = (tab) => {
         setActiveTab(tab);
         if (tab === 'single') {
+            setAllFalse();
             setIsSingleCore(true);
-        } else {
-            setIsSingleCore(false);
+        } else if (tab === 'multi') {
+            setAllFalse();
+            setIsMultiCore(true);
+        } else if (tab === 'apple') {
+            setAllFalse();
+            setIsApple(true);
+        } else if (tab === 'intel') {
+            setAllFalse();
+            setIsIntel(true);
+        } else if (tab === 'amd') {
+            setAllFalse();
+            setIsAMD(true);
+        } else if (tab === 'windows') {
+            setAllFalse();
+            setIsWindows(true);
+        } else if (tab === 'macos') {
+            setAllFalse();
+            setIsMacOS(true);
+        } else if (tab === 'linux') {
+            setAllFalse();
+            setIsLinux(true);
         }
     }
 
@@ -203,13 +241,13 @@ const Page = () => {
             <br />
             <br />
 
-            <div>
+            <div style={{ border: '1px solid #ccc', borderRadius: '10px', padding: '10px' }}>
                 <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center', height: '100%' }}>
-                    <button onClick={() => handleTabChange('single')} className={`text-center black_btn  ${activeTab === 'single' ? 'active-tab' : ''}`} style={{ marginRight: '10px' }}>
-                        Single Core
+                    <button onClick={() => handleTabChange('single')} className={`text-center black_btn ${activeTab === 'single' ? 'active-tab' : ''}`} style={{ marginRight: '10px' }}>
+                        {activeTab === 'single' ? <strong>Single Core</strong> : 'Single Core'}
                     </button>
-                    <button onClick={() => handleTabChange('multi')} className={`text-center black_btn  ${activeTab === 'multi' ? 'active-tab' : ''}`}>
-                        Multi Core
+                    <button onClick={() => handleTabChange('multi')} className={`text-center black_btn ${activeTab === 'multi' ? 'active-tab' : ''}`}>
+                        {activeTab === 'multi' ? <strong>Multi Core</strong> : 'Multi Core'}
                     </button>
                 </div>
             </div>

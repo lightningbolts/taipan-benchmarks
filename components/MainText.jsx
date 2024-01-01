@@ -22,7 +22,7 @@ const MainText = () => {
             )}
             <>
                 <br className="max-md:hidden" />
-                <Link href="/view-prompts" className="orange_gradient text-center"> Discover.</Link>
+                <Link href="/cpu-benchmarks" className="orange_gradient text-center"> Discover.</Link>
             </>
         </h1>
     )

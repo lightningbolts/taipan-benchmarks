@@ -11,27 +11,27 @@ const DownloadFeed = () => {
             <div className="feed_container">
                 <Download
                     os="Windows 10 or 11"
-                    file_name="primepoint_windows.exe"
+                    file_name="e_windows.exe"
                     os_logo="windows"
                 />
                 <Download
                     os="MacOS (Arm)"
-                    file_name="primepoint_macos_arm"
+                    file_name="e_macos_arm"
                     os_logo="apple"
                 />
                 <Download
                     os="MacOS (Intel)"
-                    file_name="primepoint_macos_intel"
+                    file_name="e_macos_intel"
                     os_logo="apple"
                 />
                 <Download
                     os="Linux (Debian)"
-                    file_name="primepoint_linux_debian"
+                    file_name="e_linux_debian"
                     os_logo="ubuntu"
                 />
                 <Download
                     os="Linux (Arch)"
-                    file_name="primepoint_linux_arch"
+                    file_name="e_linux_arch"
                     os_logo="archlinux"
                 />
                 <p className="desc text-center">

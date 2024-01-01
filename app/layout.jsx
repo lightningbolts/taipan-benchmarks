@@ -3,6 +3,7 @@ import '@styles/globals.css';
 import Nav from '@components/Nav';
 import Provider from '@components/Provider';
 import Footer from '@components/Footer';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metedata = {
     title: 'Taipan Benchmarks',
@@ -21,6 +22,7 @@ const RootLayout = ({ children }) => {
                     <main className='app'>
                         <Nav />
                         {children}
+                        <Analytics />
                     </main>
                     {/* <Footer /> */}
                 </Provider>

@@ -34,17 +34,12 @@ const DownloadFeed = () => {
                     file_name="e_linux_arch.zip"
                     os_logo="archlinux"
                 />
-                {/* <p className="desc text-center">
-                    If you are running Linux or MacOS, you will need to make the file executable. To do that, run the command in the terminal:
-                    <br />
-                    <br />
-                    <code>
-                        chmod +x [file_name]
-                    </code>
-                    <br />
-                    <br />
-                    where <code>[file_name]</code> is the name of the file you downloaded.
-                </p> */}
+                <p className="desc text-center">
+                    System requirements: 4GB RAM
+                </p>
+                <p className="desc text-center">
+                    Processor requirements: AMD, Intel, or Apple Silicon
+                </p>
             </div>
         </section>
     )

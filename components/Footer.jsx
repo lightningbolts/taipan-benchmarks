@@ -9,15 +9,37 @@ const Footer = () => {
                         © 2024 Taipan Benchmarks
                     </h1>
                 </div>
-                <div className="footer_right">
+                <div className="footer_center">
+                    <h1><strong>Downloads</strong></h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">About</a>
+                        <a href="">Windows 10 or 11</a>
+                    </h1>
+                    <h1>
+                        <a href="">MacOS (Arm)</a>
+                    </h1>
+                    <h1>
+                        <a href="">MacOS (Intel)</a>
+                    </h1>
+                    <h1>
+                        <a href="">Linux (Debian)</a>
+                    </h1>
+                    <h1>
+                        <a href="">Linux (Arch)</a>
+                    </h1>
+                </div>
+                <div className="footer_right">
+                    <h1><strong>About Taipan Benchmarks</strong></h1>
+                    <h1 className="footer_text blue_gradient">
+                        <a href="">About Us</a>
                     </h1>
                     <h1 className="footer_text blue_gradient">
                         <a href="">Contact</a>
                     </h1>
                     <h1 className="footer_text blue_gradient">
                         <a href="">Privacy Policy</a>
+                    </h1>
+                    <h1>
+                        <a href="">Help C</a>
                     </h1>
                 </div>
             </div>

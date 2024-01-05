@@ -14,16 +14,16 @@ const Footer = () => {
                     <h1 className="footer_text blue_gradient">
                         <a href="">Windows 10 or 11</a>
                     </h1>
-                    <h1>
+                    <h1 className="footer_text blue_gradient">
                         <a href="">MacOS (Arm)</a>
                     </h1>
-                    <h1>
+                    <h1 className="footer_text blue_gradient">
                         <a href="">MacOS (Intel)</a>
                     </h1>
-                    <h1>
+                    <h1 className="footer_text blue_gradient">
                         <a href="">Linux (Debian)</a>
                     </h1>
-                    <h1>
+                    <h1 className="footer_text blue_gradient">
                         <a href="">Linux (Arch)</a>
                     </h1>
                 </div>
@@ -38,8 +38,8 @@ const Footer = () => {
                     <h1 className="footer_text blue_gradient">
                         <a href="">Privacy Policy</a>
                     </h1>
-                    <h1>
-                        <a href="">Help C</a>
+                    <h1 className="footer_text blue_gradient">
+                        <a href="">Help Center</a>
                     </h1>
                 </div>
             </div>

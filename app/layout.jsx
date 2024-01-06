@@ -4,6 +4,7 @@ import Nav from '@components/Nav';
 import Provider from '@components/Provider';
 import Footer from '@components/Footer';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metedata = {
     title: 'Taipan Benchmarks',
@@ -24,7 +25,7 @@ const RootLayout = ({ children }) => {
                         {children}
                         <Analytics />
                     </main>
-                     <Footer />
+                    <Footer />
                 </Provider>
             </body>
         </html>

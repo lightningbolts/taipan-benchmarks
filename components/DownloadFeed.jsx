@@ -39,6 +39,9 @@ const DownloadFeed = () => {
                 </p>
                 <p className="desc text-center">
                     Processor requirements: AMD, Intel, or Apple Silicon
+                    <br/>
+                    <br/>
+                    For best results, close all other applications before running the benchmark.
                 </p>
             </div>
         </section>

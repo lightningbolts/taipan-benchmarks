@@ -38,10 +38,13 @@ const Nav = () => {
               Download
             </Link>
             <Link href="/cpu-benchmarks" className="black_btn">
-              View Results
+              Results
+            </Link>
+            <Link href="/leaderboard" className="black_btn">
+              Leaderboard
             </Link>
             <Link href="/view-prompts" className="black_btn">
-              View Posts
+              Posts
             </Link>
             <Link href="/create-prompt" className="black_btn">
               Create Post
@@ -68,10 +71,13 @@ const Nav = () => {
                     Download
                   </Link>
                   <Link href="/cpu-benchmarks" className="black_btn">
-                    View Results
+                    Results
+                  </Link>
+                  <Link href="/leaderboard" className="black_btn">
+                    Leaderboard
                   </Link>
                   <Link href="/view-prompts" className="black_btn">
-                    View Posts
+                    Posts
                   </Link>
                   <button
                     type="button"
@@ -119,14 +125,21 @@ const Nav = () => {
                   className="dropdown_item"
                   onClick={() => setToggleDropdown(false)}
                 >
-                  View Results
+                  Results
+                </Link>
+                <Link
+                  href="/leaderboard"
+                  className="dropdown_item"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  Leaderboard
                 </Link>
                 <Link
                   href="/view-prompts"
                   className="dropdown_item"
                   onClick={() => setToggleDropdown(false)}
                 >
-                  View Posts
+                  Posts
                 </Link>
                 <Link
                   href="/create-prompt"

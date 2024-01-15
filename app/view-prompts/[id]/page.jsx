@@ -15,7 +15,10 @@ const ViewPrompt = ({ params }) => {
     // console.log(params)
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await fetch(`/api/view-prompts/${params?.id}`);
+            const response = await fetch(`/api/view-prompts/${params?.id}`,
+                {method: "GET"},
+                {cache: "no-store"}
+            );
             const data = await response.json();
             console.log(data)
             setPromptData(data);

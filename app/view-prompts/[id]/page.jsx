@@ -12,20 +12,16 @@ const ViewPrompt = ({ params }) => {
     // console.log(key)
     const [promptData, setPromptData] = useState([]);
     const { data: session } = useSession();
-    // console.log(params)
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await fetch(`/api/view-prompts/${params?.id}`,
-                {method: "GET"},
-                {cache: "no-store"}
-            );
+            console.log(params)
+            const response = await fetch(`/api/view-prompts/${params?.id}`);
             const data = await response.json();
-            console.log(data)
             setPromptData(data);
         };
 
         if (params?.id) fetchPosts();
-    }, [params.id, session?.user.id]);
+    }, []);
     console.log(promptData)
     return (
         <PromptPage

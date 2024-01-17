@@ -16,7 +16,7 @@ const PromptPage = ({ promptData }) => {
                     </div>
                 </div>
                 <div className="prompt_page_content">
-                    <div className="prompt_page_user">
+                    {/* <div className="prompt_page_user">
                         <div className="prompt_page_user_image">
                             <img src={promptData.creator.image} alt="" />
                         </div>
@@ -24,7 +24,7 @@ const PromptPage = ({ promptData }) => {
                             <h3 className="prompt_page_user_name">{promptData.creator.username}</h3>
                             <p className="prompt_page_user_email">{promptData.creator.email}</p>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="prompt_page_copy">
                         <button className="prompt_page_copy_btn">Copy</button>
                     </div>

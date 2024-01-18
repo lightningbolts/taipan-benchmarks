@@ -7,23 +7,21 @@ import PromptPage from "@components/PromptPage";
 
 const ViewPrompt = ({ params }) => {
     const searchParams = useSearchParams();
-    // const userName = searchParams.get("name");
-    const key = searchParams.get("key");
-    // console.log(key)
-    const [promptData, setPromptData] = useState([]);
+    const [promptData, setPromptData] = useState(null);
     const { data: session } = useSession();
-    useEffect(() => {
-        const fetchPosts = async () => {
-            console.log(params)
-            const response = await fetch(`/api/view-prompts/${params?.id}`);
-            const data = await response.json();
-            setPromptData(data);
-        };
-
-        if (params?.id) fetchPosts();
-    }, []);
-    console.log(promptData)
-    return (
+    const fetchPosts = async () => {
+        const response = await fetch(`/api/view-prompts/${params?.id}`, {cache: "no-store"});
+        const data = await response.json();
+        setPromptData(data);
+    };
+    useEffect( () => {
+        if (params?.id) {
+            (async () => {
+                await fetchPosts();
+            })()
+        }
+    }, [params.id]);
+    return promptData && (
         <PromptPage
             promptData={promptData}
         />

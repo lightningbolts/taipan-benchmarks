@@ -38,7 +38,7 @@ const Form = ({
           <span className='font-satoshi font-semibold text-base text-gray-700'>
             Tag &nbsp;
             <span className='font-normal'>
-              (#product, #webdev, #idea, #benchmark)
+              (product, webdev, idea, benchmark, etc...)
             </span>
           </span>
           <input

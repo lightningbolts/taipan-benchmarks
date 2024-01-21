@@ -14,6 +14,8 @@ export const POST = async (request, res) => {
     const bench = await request.json();
     try {
         await connectToDatabase();
+        // remove any additional whitespace from the cpu model
+        bench.cpu_model = bench.cpu_model.trim();
         const newBench = await Bench.create(bench);
         await newBench.save();
         return new Response(JSON.stringify(newBench), { status: 201 });

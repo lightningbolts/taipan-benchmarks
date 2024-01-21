@@ -1,8 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart, CategoryScale, LinearScale, BarController, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { set } from 'mongoose';
+import BarChart from "@components/BarChart";
 
 const Page = () => {
     const [cpuScores, setCpuScores] = useState([]);
@@ -119,112 +117,45 @@ const Page = () => {
         return averageScores;
     }
 
-    // Get all the CPU models
-    const cpuModels = Object.keys(calculateAverageSingleCoreScore());
-    const cpuModels2 = Object.keys(calculateAverageMultiCoreScore());
-    // Get all the average single core scores
-    const singleCoreScores = Object.values(calculateAverageSingleCoreScore());
-    // Get all the average multi core scores
-    const multiCoreScores = Object.values(calculateAverageMultiCoreScore());
+    // Retrieve all the single core scores with CPU Model as key and score as value in an array
+    const getSingleCoreScores = () => {
+        const scores = [];
 
-    // console.log(calculateAverageSingleCoreScore());
-    // console.log(calculateAverageMultiCoreScore());
+        cpuScores.forEach((cpu) => {
+            scores.push([cpu.cpu_model, cpu.single_core_score]);
+        });
 
-    // Create two datasets from the average scores
-    const labels = cpuModels;
-    const labels2 = cpuModels2;
-    const data = {
-        labels: cpuModels.sort((a, b) => calculateAverageSingleCoreScore()[b] - calculateAverageSingleCoreScore()[a]),
-        datasets: [{
-            axis: 'y',
-            label: 'Single Core Score',
-            data: singleCoreScores.sort((a, b) => b - a),
-            fill: false,
-            backgroundColor: singleCoreScores.map((score, index) => {
-                const cpuModel = labels[index];
-                if (cpuModel.includes('Intel')) {
-                    return 'rgba(54, 162, 235, 0.2)';
-                } else if (cpuModel.includes('AMD')) {
-                    return 'rgba(255, 99, 132, 0.2)';
-                } else if (cpuModel.includes('Apple')) {
-                    return 'rgba(0, 0, 0, 0.2)';
-                }
-                return 'rgba(0, 0, 0, 0.2)'; // Default color
-            }),
-            borderColor: singleCoreScores.map((score, index) => {
-                const cpuModel = labels[index];
-                if (cpuModel.includes('Intel')) {
-                    return 'rgb(54, 162, 235)';
-                } else if (cpuModel.includes('AMD')) {
-                    return 'rgb(255, 99, 132)';
-                } else if (cpuModel.includes('Apple')) {
-                    return 'rgb(0, 0, 0)';
-                }
-                return 'rgb(0, 0, 0)'; // Default color
-            }),
-            borderWidth: 1
-        }]
-    };
+        return scores;
+    }
 
-    const config = {
-        type: 'bar',
-        data,
-        options: {
-            indexAxis: 'y',
-        }
-    };
+    // Retrieve all the multi core scores with CPU Model as key and score as value in an array
+    const getMultiCoreScores = () => {
+        const scores = [];
 
-    const data2 = {
-        labels: cpuModels2.sort((a, b) => calculateAverageMultiCoreScore()[b] - calculateAverageMultiCoreScore()[a]),
-        datasets: [{
-            axis: 'y',
-            label: 'Multi Core Score',
-            data: multiCoreScores.sort((a, b) => b - a),
-            fill: false,
-            backgroundColor: multiCoreScores.map((score, index) => {
-                const cpuModel = labels2[index];
-                if (cpuModel.includes('Intel')) {
-                    return 'rgba(54, 162, 235, 0.2)';
-                } else if (cpuModel.includes('AMD')) {
-                    return 'rgba(255, 99, 132, 0.2)';
-                } else if (cpuModel.includes('Apple')) {
-                    return 'rgba(0, 0, 0, 0.2)';
-                }
-                return 'rgba(0, 0, 0, 0.2)'; // Default color
-            }),
-            borderColor: multiCoreScores.map((score, index) => {
-                const cpuModel = labels2[index];
-                if (cpuModel.includes('Intel')) {
-                    return 'rgb(54, 162, 235)';
-                } else if (cpuModel.includes('AMD')) {
-                    return 'rgb(255, 99, 132)';
-                } else if (cpuModel.includes('Apple')) {
-                    return 'rgb(0, 0, 0)';
-                }
-                return 'rgb(0, 0, 0)'; // Default color
-            }),
-            borderWidth: 1
-        }]
-    };
+        cpuScores.forEach((cpu) => {
+            scores.push([cpu.cpu_model, cpu.multi_core_score]);
+        });
 
-    const config2 = {
-        type: 'bar',
-        data: data2,
-        options: {
-            indexAxis: 'y',
-        }
-    };
+        return scores;
+    }
 
-    // Register the chart components
-    Chart.register(
-        CategoryScale,
-        LinearScale,
-        BarController,
-        BarElement,
-        Title,
-        Tooltip,
-        Legend
-    );
+    // Sort the CPU Models by their average single core scores
+    const sortSingleCoreScores = () => {
+        const scores = calculateAverageSingleCoreScore();
+        const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+
+        return sortedScores;
+    }
+
+    // Sort the CPU Models by their average multi core scores
+    const sortMultiCoreScores = () => {
+        const scores = calculateAverageMultiCoreScore();
+        const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+
+        return sortedScores;
+    }
+
+    console.log(sortSingleCoreScores());
 
     return (
         <div>
@@ -256,12 +187,12 @@ const Page = () => {
             <br />
             <br />
             {isSingleCore ? (
-                <div style={{ width: '100%', height: '100vh' }}>
-                    <Bar {...config} className='' style={{ width: '100%', height: '100%' }} />
+                <div style={{ width: `140vh`, height: `${250}vh`, overflow: 'auto' }}>
+                    <BarChart data={sortSingleCoreScores()} />
                 </div>
             ) : (
-                <div style={{ width: '100%', height: '100vh' }}>
-                    <Bar {...config2} className='' style={{ width: '100%', height: '100%' }} />
+                <div style={{ width: '140vh', height: `${250}vh`, overflow: 'auto' }}>
+                    <BarChart data={sortMultiCoreScores()} />
                 </div>
             )}
         </div>

@@ -24,3 +24,20 @@ export const POST = async (request, res) => {
         return new Response("Failed to create a new cpu benchmark", { status: 500 });
     }
 }
+
+export const PATCH = async (request) => {
+    try {
+        await connectToDatabase();
+        // Get all benchmarks
+        const benchmarks = await Bench.find({});
+        // Trim the cpu_model field for every benchmark
+        benchmarks.forEach(async (bench) => {
+            bench.cpu_model = bench.cpu_model.trim();
+            await bench.save();
+            await Bench.findByIdAndUpdate(bench._id, bench);
+        });
+        return new Response("Successfully updated cpu benchmarks", { status: 200 });
+    } catch (error) {
+        return new Response("Failed to update cpu benchmarks", { status: 500 });
+    }
+}

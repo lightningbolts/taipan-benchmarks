@@ -121,12 +121,14 @@ const PromptSlot = ({ promptData }) => {
                         </p>
                     </>
                 )}
-                <p
-                    className='font-inter text-sm blue_gradient cursor-pointer'
-                    onClick={() => handleComment && handleComment(promptData)}
-                >
-                    Comment
-                </p>
+                {session?.user.id && (
+                    <p
+                        className='font-inter text-sm blue_gradient cursor-pointer'
+                        onClick={() => handleComment && handleComment(promptData)}
+                    >
+                        Comment
+                    </p>
+                )}
             </div>
         </div>
     )

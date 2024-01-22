@@ -65,7 +65,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
         </div>
       </div>
 
-      <p className='my-4 font-satoshi text-sm text-gray-700'>{post.prompt}</p>
+      <p className='my-4 font-satoshi text-sm text-gray-700'>{post.prompt.split(' ').slice(0, 20).join(' ')}</p>
       <a href={`/view-prompts/${post._id}`}
          className='font-inter text-sm text-blue-500'>
         View Full Prompt

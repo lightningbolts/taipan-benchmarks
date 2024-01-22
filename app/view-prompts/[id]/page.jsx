@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import PromptPage from "@components/PromptPage";
+import PromptSlot from "@components/PromptSlot";
 
 const ViewPrompt = ({ params }) => {
     const searchParams = useSearchParams();
@@ -22,7 +23,7 @@ const ViewPrompt = ({ params }) => {
         }
     }, [params.id]);
     return promptData && (
-        <PromptPage
+        <PromptSlot
             promptData={promptData}
         />
     );

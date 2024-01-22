@@ -28,8 +28,8 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     const response = await fetch("/api/prompt", { cache: "no-store" });
-    const data = await response.json();
-
+    let data = await response.json();
+    data = data.filter((item) => item.commentReference === null);
     setAllPosts(data);
   };
 

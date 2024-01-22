@@ -57,7 +57,8 @@ const PromptSlot = ({ promptData }) => {
     }
 
     return (
-        <div className="100vh flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[1000px] w-full h-fit">
+        <div
+            className="100vh flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[800px] w-full h-fit">
             <div className='flex justify-between items-start gap-5'>
                 <div
                     className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
@@ -103,24 +104,23 @@ const PromptSlot = ({ promptData }) => {
                 #{promptData.tag}
             </p>
 
-            {session?.user.id === promptData.creator._id && (
-                <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
-                    <p
-                        className='font-inter text-sm green_gradient cursor-pointer'
-                        onClick={() => handleEdit && handleEdit(promptData)}
-                    >
-                        Edit
-                    </p>
-                    <p
-                        className='font-inter text-sm orange_gradient cursor-pointer'
-                        onClick={() => handleDelete && handleDelete(promptData)}
-                    >
-                        Delete
-                    </p>
-                </div>
-            )}
-
             <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
+                {session?.user.id === promptData.creator._id && (
+                    <>
+                        <p
+                            className='font-inter text-sm green_gradient cursor-pointer'
+                            onClick={() => handleEdit && handleEdit(promptData)}
+                        >
+                            Edit
+                        </p>
+                        <p
+                            className='font-inter text-sm orange_gradient cursor-pointer'
+                            onClick={() => handleDelete && handleDelete(promptData)}
+                        >
+                            Delete
+                        </p>
+                    </>
+                )}
                 <p
                     className='font-inter text-sm blue_gradient cursor-pointer'
                     onClick={() => handleComment && handleComment(promptData)}

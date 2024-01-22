@@ -9,7 +9,7 @@ export const POST = async (req, res) => {
         const newPrompt = await Prompt.create({
             creator: userId,
             prompt: prompt,
-            tag,
+            tag: tag ? tag : null,
             likes: 0,
             dislikes: 0,
             commentReference: commentReference ? commentReference : null,

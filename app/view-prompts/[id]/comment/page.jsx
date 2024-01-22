@@ -28,7 +28,7 @@ const CreateComment = ({ params }) => {
             })
 
             if (response.ok) {
-                router.push("/")
+                router.push("/view-prompts")
             }
         } catch (e) {
             console.log(e)

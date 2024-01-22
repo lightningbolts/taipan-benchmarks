@@ -1,31 +1,56 @@
 "use client"
-import { useState } from "react"
-import { useSession } from "next-auth/react";
-import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import PromptPage from "@components/PromptPage";
+import {useEffect, useState} from "react"
+import {useSession} from "next-auth/react";
+import {useSearchParams} from "next/navigation";
 import PromptSlot from "@components/PromptSlot";
 
-const ViewPrompt = ({ params }) => {
+const PromptSlotList = ({data}) => {
+    return (
+        <div className="mt-20">
+            {data.map((prompt) => (
+                <div
+                    className="mt-5">
+                    <PromptSlot
+                        promptData={prompt}
+                    />
+                </div>
+            ))}
+        </div>
+    );
+}
+const ViewPrompt = ({params}) => {
     const searchParams = useSearchParams();
     const [promptData, setPromptData] = useState(null);
-    const { data: session } = useSession();
-    const fetchPosts = async () => {
-        const response = await fetch(`/api/view-prompts/${params?.id}`, {cache: "no-store"});
-        const data = await response.json();
-        setPromptData(data);
+    const [commentData, setCommentData] = useState(null);
+    const {data: session} = useSession();
+    const fetchComments = async () => {
+        const response = await fetch(`/api/view-prompts/comment/${params?.id}`, {cache: "no-store"});
+        let data = await response.json();
+        console.log(data);
+        setCommentData(data);
     };
-    useEffect( () => {
+    const fetchPrompt = async () => {
+        const response = await fetch(`/api/view-prompts/${params?.id}`, {cache: "no-store"});
+        let data = await response.json();
+        setPromptData(data);
+    }
+    useEffect(() => {
         if (params?.id) {
             (async () => {
-                await fetchPosts();
+                await fetchPrompt();
+                await fetchComments();
             })()
         }
     }, [params.id]);
-    return promptData && (
-        <PromptSlot
-            promptData={promptData}
-        />
+    return promptData && commentData && (
+        <div>
+            <PromptSlot
+                promptData={promptData}
+            />
+            <PromptSlotList
+                data={commentData}
+            />
+        </div>
     );
 }
 export default ViewPrompt;

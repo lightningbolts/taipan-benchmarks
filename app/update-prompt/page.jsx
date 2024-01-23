@@ -2,11 +2,13 @@
 import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
+import {useSession} from "next-auth/react";
 
 const EditPrompt = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
     const promptId = searchParams.get("id")
+    const { data: session } = useSession()
     const [submitting, setSubmitting] = useState(false)
     const [post, setPost] = useState({
         prompt: "",
@@ -33,6 +35,20 @@ const EditPrompt = () => {
         if (!promptId) return alert("Prompt ID not found")
 
         try {
+            // Fetch the current user's ID from the session or JWT
+            const currentUserId = session?.user.id
+
+            // Fetch the prompt from the database
+            const promptResponse = await fetch(`/api/prompt/${promptId}`)
+            const promptData = await promptResponse.json()
+
+            console.log(promptData.creator, currentUserId)
+
+            // Check if the current user is the creator of the prompt
+            if (promptData.creator._id !== currentUserId.toString()) {
+                return alert("You are not authorized to edit this prompt")
+            }
+
             const response = await fetch(`/api/prompt/${promptId}`, {
                 method: "PATCH",
                 body: JSON.stringify({

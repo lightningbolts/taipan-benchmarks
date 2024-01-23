@@ -20,9 +20,9 @@ const BarChart = ({ data }) => {
     }, []);
 
     return (
-        <svg ref={svgRef} width="100%" height={height * data.length + height + 4 * barGap}>
+        <svg ref={svgRef} height={height * data.length + height + 4 * barGap} className="w-full flex">
             {data.map(([index, value], i) => {
-                const rectWidth = scale(value) * 1.3;
+                const rectWidth = scale(value);
                 return (
                     <g key={index}>
                         <text
@@ -52,7 +52,7 @@ const BarChart = ({ data }) => {
                     </g>
                 );
             })}
-            <line x1="400" y1={height * data.length + height + 1 * barGap} x2="400" y2="0" stroke="black" /> {/* y-axis */}
+            <line x1="400" y1={height * data.length + height + 2 * barGap} x2="400" y2="0" stroke="black" /> {/* y-axis */}
         </svg>
     );
 };

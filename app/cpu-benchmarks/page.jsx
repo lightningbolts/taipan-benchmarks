@@ -155,7 +155,41 @@ const Page = () => {
         return sortedScores;
     }
 
-    console.log(sortSingleCoreScores());
+    // Get max single core score
+    const getMaxSingleCoreScore = () => {
+        const scores = calculateAverageSingleCoreScore();
+        const maxScore = Math.max(...Object.values(scores));
+
+        return maxScore;
+    }
+
+    // Get max multi core score
+    const getMaxMultiCoreScore = () => {
+        const scores = calculateAverageMultiCoreScore();
+        const maxScore = Math.max(...Object.values(scores));
+
+        return maxScore;
+    }
+
+    // Get number of items in single core scores
+    const getSingleCoreScoresLength = () => {
+        const scores = calculateAverageSingleCoreScore();
+        const length = Object.values(scores).length;
+
+        return length;
+    }
+
+    // Get number of items in multi core scores
+
+    const getMultiCoreScoresLength = () => {
+        const scores = calculateAverageMultiCoreScore();
+        const length = Object.values(scores).length;
+
+        return length;
+    }
+
+    const chartWidth = `100vh`;
+    const chartHeight = `${getSingleCoreScoresLength() * 60}px`;
 
     return (
         <div>
@@ -172,7 +206,7 @@ const Page = () => {
             <br />
             <br />
 
-            <div style={{ border: '1px solid #ccc', borderRadius: '10px', padding: '10px' }}>
+            <div style={{ border: '1px solid #ccc', borderRadius: '10px', padding: '10px' }} className="w-full flex">
                 <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center', height: '100%' }}>
                     <button onClick={() => handleTabChange('single')} className={`text-center black_btn ${activeTab === 'single' ? 'active-tab' : ''}`} style={{ marginRight: '10px' }}>
                         {activeTab === 'single' ? <strong>Single Core</strong> : 'Single Core'}
@@ -187,11 +221,11 @@ const Page = () => {
             <br />
             <br />
             {isSingleCore ? (
-                <div style={{ width: `140vh`, height: `${250}vh`, overflow: 'auto' }}>
+                <div style={{ width: chartWidth, height: chartHeight, overflow: 'auto' }} className="w-full">
                     <BarChart data={sortSingleCoreScores()} />
                 </div>
             ) : (
-                <div style={{ width: '140vh', height: `${250}vh`, overflow: 'auto' }}>
+                <div style={{ width: chartWidth, height: chartHeight, overflow: 'auto' }} className="w-full">
                     <BarChart data={sortMultiCoreScores()} />
                 </div>
             )}

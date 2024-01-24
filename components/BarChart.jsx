@@ -22,7 +22,7 @@ const BarChart = ({ data }) => {
     return (
         <svg ref={svgRef} height={height * data.length + height + 4 * barGap} className="w-full flex">
             {data.map(([index, value], i) => {
-                const rectWidth = scale(value);
+                const rectWidth = scale(value) * 0.7;
                 return (
                     <g key={index}>
                         <text

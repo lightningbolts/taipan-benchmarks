@@ -105,6 +105,8 @@ const PromptSlot = ({ promptData }) => {
             </p>
 
             <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
+                <div className='flex-1'></div>
+                {/* This is to push the buttons to the right */}
                 {session?.user.id === promptData.creator._id && (
                     <>
                         <p

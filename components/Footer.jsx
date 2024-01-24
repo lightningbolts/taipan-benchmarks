@@ -3,7 +3,7 @@
 const Footer = () => {
     return (
         <section className="footer">
-            <div className="footer_container flex gap-20 flex-center">
+            <div className="footer_container flex gap-20 flex-center bg-black pt-10">
                 <div className="footer_left ">
                     <h1 className="footer_text blue_gradient">
                         © 2024 Taipan Benchmarks

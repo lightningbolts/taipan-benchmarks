@@ -67,18 +67,18 @@ const Nav = () => {
             {providers &&
               Object.values(providers).map((provider) => (
                 <div className="flex gap-3 md:gap-5">
-                  <Link href="/downloads" className="black_btn">
-                    Download
-                  </Link>
-                  <Link href="/cpu-benchmarks" className="black_btn">
-                    Results
-                  </Link>
-                  <Link href="/leaderboard" className="black_btn">
-                    Leaderboard
-                  </Link>
-                  <Link href="/view-prompts" className="black_btn">
-                    Posts
-                  </Link>
+                   <button type="button" className="">
+                  <Link href="/downloads">Download</Link>
+              </button>
+              <button type="button" className="">
+                  <Link href="/cpu-benchmarks">Results</Link>
+              </button>
+              <button type="button" className="">
+                  <Link href="/leaderboard">Leaderboard</Link>
+              </button>
+              <button type="button" className="">
+                <Link href="/view-prompts">Posts</Link>
+            </button>
                   <button
                     type="button"
                     key={provider.name}

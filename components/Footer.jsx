@@ -5,13 +5,13 @@ const Footer = () => {
         <div>
         <hr className="footer_line"/>
         <section className="footer">
-            <div className="footer_container flex gap-20 flex-center pt-10">
-                <div className="footer_left ">
+            <div className="footer_container flex gap-20 justify-center items-start py-10">
+                <div className="footer_left">
                     <h1 className="footer_text blue_gradient">
                         © 2024 Taipan Benchmarks
                     </h1>
                 </div>
-                <div className="footer_center">
+                <div className="footer_center ">
                     <h1><strong>Downloads</strong></h1>
                     <h1 className="footer_text blue_gradient">
                         <a href="">Windows 10 or 11</a>

@@ -34,22 +34,22 @@ const Nav = () => {
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/downloads" className="black_btn">
-              Download
-            </Link>
-            <Link href="/cpu-benchmarks" className="black_btn">
-              Results
-            </Link>
-            <Link href="/leaderboard" className="black_btn">
-              Leaderboard
-            </Link>
-            <Link href="/view-prompts" className="black_btn">
-              Posts
-            </Link>
-            <Link href="/create-prompt" className="black_btn">
-              Create Post
-            </Link>
-            <button type="button" onClick={signOut} className="outline_btn">
+              <button type="button" className="">
+                  <Link href="/downloads">Download</Link>
+              </button>
+              <button type="button" className="">
+                  <Link href="/cpu-benchmarks">Results</Link>
+              </button>
+              <button type="button" className="">
+                  <Link href="/leaderboard">Leaderboard</Link>
+              </button>
+              <button type="button" className="">
+                <Link href="/view-prompts">Posts</Link>
+            </button>
+            <button type="button" className="">
+                <Link href="/create-prompt">Create Post</Link>
+            </button>
+            <button type="button" onClick={signOut} className="">
               Sign Out
             </button>
             <Link href="/profile" className="flex gap-2 flex-center">

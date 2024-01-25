@@ -19,7 +19,7 @@ const BenchmarkRow = ({ post, handleTagClick }) => {
         setTimeout(() => setCopied(false), 3000);
     };
     return (
-        <div className='mt-5 prompt_card w-full'>
+        <div className='mt-5 100vh flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[800px] w-full h-fit'>
             <div className='flex justify-between items-start gap-5'>
                 <div className='flex flex-col'>
                     <h3 className='font-satoshi font-semibold text-gray-900'>

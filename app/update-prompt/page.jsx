@@ -54,6 +54,7 @@ const EditPrompt = () => {
                 body: JSON.stringify({
                     prompt: post.prompt,
                     tag: post.tag,
+                    updatedAt: Date.now(),
                 }),
             })
 

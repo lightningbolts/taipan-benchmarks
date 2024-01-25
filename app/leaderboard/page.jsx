@@ -20,7 +20,7 @@ const Leaderboard = () => {
             </p>
             {/* <Feed /> */}
             <BenchmarkList />
-
+            <div className="mt-5 flex-center"></div>
         </section>
     )
 }

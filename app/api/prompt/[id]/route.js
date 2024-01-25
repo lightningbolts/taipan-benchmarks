@@ -15,7 +15,7 @@ export const GET = async (request, { params }) => {
 }
 
 export const PATCH = async (request, { params }) => {
-    const { prompt, tag } = await request.json();
+    const { prompt, tag, updatedAt } = await request.json();
 
     try {
         await connectToDatabase();
@@ -25,6 +25,7 @@ export const PATCH = async (request, { params }) => {
         }
         existingPrompt.prompt = prompt;
         existingPrompt.tag = tag;
+        existingPrompt.updatedAt = updatedAt;
         await existingPrompt.save();
         return new Response(JSON.stringify(existingPrompt), { status: 200 });
     } catch (error) {

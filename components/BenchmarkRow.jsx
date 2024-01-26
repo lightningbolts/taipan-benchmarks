@@ -20,10 +20,9 @@ const BenchmarkRow = ({ post, handleTagClick }) => {
     };
 
     let cpu_model = post.cpu_model;
-    // Remove (R) from Intel(R) and (TM) from Core(TM) and Processor and CPU and "__th Gen" and "with Radeon Graphics"
+    // Remove (R) from Intel(R) and (TM) from Core(TM) and Processor and CPU and "__th Gen" and "with Radeon Graphics", but don't remove Core
     cpu_model = cpu_model.replace(/\(R\)/g, "");
     cpu_model = cpu_model.replace(/\(TM\)/g, "");
-    cpu_model = cpu_model.replace(/Core/g, "");
     cpu_model = cpu_model.replace(/Processor/g, "");
     cpu_model = cpu_model.replace(/CPU/g, "");
     cpu_model = cpu_model.replace(/with Radeon Graphics/g, "");

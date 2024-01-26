@@ -13,19 +13,6 @@ const BarChart = ({ data }) => {
     });
     const scale = (value) => (value / maxData) * barWidth;
     
-    // Remove (R) from Intel(R) and (TM) from Core(TM) and Processor and CPU and "__th Gen" and "with Radeon Graphics", but don't remove Core
-    data.forEach(([, value], i) => {
-        let cpu_model = value;
-        cpu_model = cpu_model.replace(/\(R\)/g, '');
-        cpu_model = cpu_model.replace(/\(TM\)/g, '');
-        cpu_model = cpu_model.replace(/Processor/g, '');
-        cpu_model = cpu_model.replace(/CPU/g, '');
-        cpu_model = cpu_model.replace(/__th Gen/g, '');
-        cpu_model = cpu_model.replace(/with Radeon Graphics/g, '');
-        cpu_model = cpu_model.trim()
-        data[i][1] = cpu_model;
-    });
-
     useEffect(() => {
         if (svgRef.current) {
             setBarWidth(svgRef.current.getBoundingClientRect().width);

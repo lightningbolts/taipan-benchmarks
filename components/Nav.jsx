@@ -105,7 +105,7 @@ const Nav = () => {
               onClick={() => setToggleDropdown((prev) => !prev)}
             />
             {toggleDropdown && (
-              <div className="dropdown">
+              <div className="dropdown_mobile">
                 <Link
                   href="/profile"
                   className="dropdown_item"

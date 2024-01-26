@@ -12,7 +12,6 @@ const BarChart = ({ data }) => {
         data[i][1] = Math.round(value);
     });
     const scale = (value) => (value / maxData) * barWidth;
-    
     useEffect(() => {
         if (svgRef.current) {
             setBarWidth(svgRef.current.getBoundingClientRect().width);

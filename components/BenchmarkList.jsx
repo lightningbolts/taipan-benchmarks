@@ -101,6 +101,7 @@ const Feed = () => {
                     className='search_input peer'
                 />
             </form>
+            <div className='mt-10 flex-center'></div>
             <div style={{ border: '1px solid #ccc', borderRadius: '10px', padding: '10px' }}>
                 <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center', height: '100%' }}>
                     <button onClick={() => sortBenchmarks("single_core")} className="black_btn" style={{ marginRight: '5px' }}>

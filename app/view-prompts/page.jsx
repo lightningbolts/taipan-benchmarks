@@ -1,4 +1,5 @@
 import Feed from "@components/Feed";
+import Footer from "@components/Footer";
 
 const PromptFeed = () => {
     return (
@@ -13,6 +14,7 @@ const PromptFeed = () => {
                 Taipan Benchmarks is a collection of benchmarks that are easy to use and understand.
             </p>
             <Feed />
+            <Footer />
 
         </section>
     )

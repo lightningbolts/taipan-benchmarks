@@ -50,6 +50,7 @@ const ViewPrompt = ({params}) => {
             <PromptSlotList
                 data={commentData}
             />
+            <div className="mt-5"></div>
         </div>
     );
 }

@@ -2,6 +2,7 @@ import Feed from "@components/Feed"
 import BenchmarkFeed from "@components/BenchmarkFeed"
 import { useSession } from "next-auth/react"
 import MainText from "@components/MainText"
+import Footer from "@components/Footer";
 
 const Home = () => {
   // Check if user is logged in
@@ -14,6 +15,7 @@ const Home = () => {
       </p>
       {/* <Feed /> */}
       <BenchmarkFeed />
+        <Footer />
 
     </section>
   )

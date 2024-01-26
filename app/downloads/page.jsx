@@ -1,5 +1,6 @@
 "use client"
 import DownloadFeed from "@components/DownloadFeed"
+import Footer from "@components/Footer";
 
 const Downloads = () => {
     return (
@@ -10,6 +11,8 @@ const Downloads = () => {
                 <span className="orange_gradient text-center"> Right now.</span>
             </h1>
             <DownloadFeed />
+            <div className="mt-5 flex-center"></div>
+            <Footer />
         </section>
     )
 }

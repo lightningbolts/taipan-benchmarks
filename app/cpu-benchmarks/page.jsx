@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import BarChart from "@components/BarChart";
+import Footer from "@components/Footer";
 
 const Page = () => {
     const [cpuScores, setCpuScores] = useState([]);
@@ -229,6 +230,8 @@ const Page = () => {
                     <BarChart data={sortMultiCoreScores()} />
                 </div>
             )}
+            <div className="mt-5 flex-center"></div>
+            <Footer />
         </div>
     );
 };

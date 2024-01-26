@@ -1,5 +1,7 @@
 "use client"
 
+import DownloadFooter from "@components/DownloadFooter";
+
 const Footer = () => {
     return (
         <div>
@@ -14,19 +16,39 @@ const Footer = () => {
                 <div className="footer_center ">
                     <h1><strong>Downloads</strong></h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">Windows 10 or 11</a>
+                        <DownloadFooter
+                            os={"Windows 10 or 11"}
+                            file_name={"array_windows.zip"}
+                            os_logo={"windows"}
+                        />
                     </h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">MacOS (Arm)</a>
+                        <DownloadFooter
+                            os={"MacOS (Arm)"}
+                            file_name={"array_macos_arm.zip"}
+                            os_logo={"apple"}
+                        />
                     </h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">MacOS (Intel)</a>
+                        <DownloadFooter
+                            os={"MacOS (Intel)"}
+                            file_name={"array_macos_intel.zip"}
+                            os_logo={"apple"}
+                        />
                     </h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">Linux (Debian)</a>
+                        <DownloadFooter
+                            os={"Linux (Debian)"}
+                            file_name={"array_linux_debian.zip"}
+                            os_logo={"ubuntu"}
+                        />
                     </h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">Linux (Arch)</a>
+                        <DownloadFooter
+                            os={"Linux (Arch)"}
+                            file_name={"array_linux_arch.zip"}
+                            os_logo={"archlinux"}
+                        />
                     </h1>
                 </div>
                 <div className="footer_right">
@@ -42,6 +64,9 @@ const Footer = () => {
                     </h1>
                     <h1 className="footer_text blue_gradient">
                         <a href="">Help Center</a>
+                    </h1>
+                    <h1 className="footer_text blue_gradient">
+                        <a href="">Terms of Service</a>
                     </h1>
                 </div>
             </div>

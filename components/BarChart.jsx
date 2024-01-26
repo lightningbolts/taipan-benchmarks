@@ -52,7 +52,13 @@ const BarChart = ({ data }) => {
                     </g>
                 );
             })}
-            <line x1="400" y1={height * data.length + height + 2 * barGap} x2="400" y2="0" stroke="black" /> {/* y-axis */}
+            <line
+                x1="400"
+                y1="0"
+                x2="400"
+                y2={height * data.length + height + 3 * barGap}
+                stroke="black"
+            />
         </svg>
     );
 };

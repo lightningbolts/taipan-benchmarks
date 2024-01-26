@@ -18,6 +18,20 @@ const BenchmarkCard = ({ post, handleTagClick }) => {
         navigator.clipboard.writeText(post.cpu_model);
         setTimeout(() => setCopied(false), 3000);
     };
+
+    let cpu_model = post.cpu_model;
+    // Remove (R) from Intel(R) and (TM) from Core(TM) and Processor and CPU and "__th Gen" and "with Radeon Graphics"
+    cpu_model = cpu_model.replace(/\(R\)/g, "");
+    cpu_model = cpu_model.replace(/\(TM\)/g, "");
+    cpu_model = cpu_model.replace(/Core/g, "");
+    cpu_model = cpu_model.replace(/Processor/g, "");
+    cpu_model = cpu_model.replace(/CPU/g, "");
+    cpu_model = cpu_model.replace(/with Radeon Graphics/g, "");
+    // Remove extra spaces
+    cpu_model = cpu_model.replace(/\s\s+/g, " ");
+    // Remove spaces at the beginning and end
+    cpu_model = cpu_model.trim();
+
     return (
         <div className='prompt_card'>
             <div className='flex justify-between items-start gap-5'>
@@ -27,7 +41,7 @@ const BenchmarkCard = ({ post, handleTagClick }) => {
                         {post.os_info.charAt(0).toUpperCase() + post.os_info.slice(1)}
                     </h3>
                     <p className='font-inter text-sm text-gray-500'>
-                        {post.cpu_model}
+                        {cpu_model}
                     </p>
                     <p className='font-inter text-sm text-gray-500'>
                         {post.processes} Cores

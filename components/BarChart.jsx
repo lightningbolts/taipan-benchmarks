@@ -12,6 +12,12 @@ const BarChart = ({ data }) => {
         data[i][1] = Math.round(value);
     });
     const scale = (value) => (value / maxData) * barWidth;
+    
+    // Remove (R) from Intel(R) and (TM) from Core(TM) and Processor and CPU and "__th Gen" and "with Radeon Graphics", but don't remove Core
+    data.forEach(([, value], i) => {
+        data[i][0] = value.replace(/(\(R\)|\(TM\)|Processor|CPU|__th Gen|with Radeon Graphics)/g, '');
+    }
+    );
 
     useEffect(() => {
         if (svgRef.current) {

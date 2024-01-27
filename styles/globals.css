@@ -205,6 +205,19 @@
   color: #666; /* Brighter color on hover */
 }
 
+.body-load {
+  opacity: 1;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.body-load.loaded {
+  opacity: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 /* PromptCard Component */
 .prompt_card {
   @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;

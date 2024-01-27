@@ -36,7 +36,7 @@ const Nav = () => {
                             <Link href="/downloads" className="hover-brighten">Download</Link>
                         </button>
                         <button type="button" className="dropdown hover-brighten">
-                            <Link href="/downloads">View</Link>
+                            <a>View</a>
                             <div className="dropdown-content">
                                 {/* Dropdown menu items go here */}
                                 <Link href="/cpu-benchmarks">Results</Link>
@@ -69,7 +69,7 @@ const Nav = () => {
                                         <Link href="/downloads">Download</Link>
                                     </button>
                                     <button type="button" className="dropdown hover-brighten">
-                                        <Link href="/downloads">View</Link>
+                                        <a>View</a>
                                         <div className="dropdown-content">
                                             {/* Dropdown menu items go here */}
                                             <Link href="/cpu-benchmarks">Results</Link>

@@ -3,7 +3,9 @@ import React, { useRef, useEffect, useState } from 'react';
 const BarChart = ({ data }) => {
     const svgRef = useRef();
     const [barWidth, setBarWidth] = useState(0);
-    const [browserHeight, setBrowserHeight] = useState(window.innerHeight);
+    const [browserHeight, setBrowserHeight] = useState(
+        typeof window !== 'undefined' ? window.innerHeight : 0
+    );
     const height = 50;
     const barGap = 5;
     const maxData = Math.max(...data.map(([, value]) => value)) * 2;

@@ -197,7 +197,7 @@ const Page = () => {
             <h1 className='head_text text-center blue_gradient'>
                 CPU Benchmark Results
                 <br className='max-md:hidden' />
-                <span className='orange_gradient text-center'>
+                <span className='orange_gradient text-center w-full flex-center'>
                     {' '}
                     Right now.
                 </span>

@@ -27,48 +27,48 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">Taipan Benchmarks</p>
+        <p className="logo_text hover-brighten">Taipan Benchmarks</p>
       </Link>
 
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
         {session?.user ? (
-          <div className="flex gap-3 md:gap-5">
-              <button type="button" className="">
-                  <Link href="/downloads">Download</Link>
-              </button>
-              <button type="button" className="">
-                  <Link href="/cpu-benchmarks">Results</Link>
-              </button>
-              <button type="button" className="">
-                  <Link href="/leaderboard">Leaderboard</Link>
-              </button>
-              <button type="button" className="">
-                <Link href="/view-prompts">Posts</Link>
-            </button>
-            <button type="button" className="">
-                <Link href="/create-prompt">Create Post</Link>
-            </button>
-            <button type="button" onClick={signOut} className="">
-              Sign Out
-            </button>
-            <Link href="/profile" className="flex gap-2 flex-center">
-              <Image
-                src={session?.user.image}
-                width={37}
-                height={37}
-                className="rounded-full"
-                alt="profile"
-              />
-            </Link>
-          </div>
+            <div className="flex gap-3 md:gap-5">
+                <button type="button" className="">
+                    <Link href="/downloads" className="hover-brighten">Download</Link>
+                </button>
+                <button type="button" className="dropdown hover-brighten">
+                    <Link href="/downloads">View</Link>
+                    <div className="dropdown-content">
+                        {/* Dropdown menu items go here */}
+                        <Link href="/cpu-benchmarks">Results</Link>
+                        <Link href="/leaderboard">Leaderboard</Link>
+                        <Link href="/view-prompts">Posts</Link>
+                    </div>
+                </button>
+                <button type="button" className="hover-brighten">
+                    <Link href="/create-prompt">Create Post</Link>
+                </button>
+                <button type="button" onClick={signOut} className="hover-brighten">
+                    Sign Out
+                </button>
+                <Link href="/profile" className="flex gap-2 flex-center">
+                    <Image
+                        src={session?.user.image}
+                        width={37}
+                        height={37}
+                        className="rounded-full"
+                        alt="profile"
+                    />
+                </Link>
+            </div>
         ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <div className="flex gap-3 md:gap-5">
-                   <button type="button" className="">
-                  <Link href="/downloads">Download</Link>
+            <>
+                {providers &&
+                    Object.values(providers).map((provider) => (
+                        <div className="flex gap-3 md:gap-5">
+                            <button type="button" className="">
+                                <Link href="/downloads">Download</Link>
               </button>
               <button type="button" className="">
                   <Link href="/cpu-benchmarks">Results</Link>

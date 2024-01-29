@@ -54,19 +54,19 @@ const Footer = () => {
                 <div className="footer_right">
                     <h1><strong>About Taipan Benchmarks</strong></h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">About Us</a>
+                        <a href="/about">About Us</a>
                     </h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">Contact</a>
+                        <a href="/contact">Contact</a>
                     </h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">Privacy Policy</a>
+                        <a href="/privacy">Privacy Policy</a>
                     </h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">Help Center</a>
+                        <a href="/help-center">Help Center</a>
                     </h1>
                     <h1 className="footer_text blue_gradient">
-                        <a href="">Terms of Service</a>
+                        <a href="/terms">Terms of Service</a>
                     </h1>
                 </div>
             </div>

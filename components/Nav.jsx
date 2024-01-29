@@ -44,6 +44,18 @@ const Nav = () => {
                                 <Link href="/view-prompts">Posts</Link>
                             </div>
                         </button>
+                        <button type="button" className="dropdown hover-brighten">
+                            <a>About Taipan</a>
+                            <div className="dropdown-content">
+                                {/* Dropdown menu items go here */}
+                                <Link href="/about">About Us</Link>
+                                <Link href="/contact">Contact</Link>
+                                <Link href="/faq">FAQ</Link>
+                                <Link href="/help-center">Help Center</Link>
+                                <Link href="/privacy">Privacy Policy</Link>
+                                <Link href="/terms">Terms of Service</Link>
+                            </div>
+                        </button>
                         <button type="button" className="hover-brighten">
                             <Link href="/create-prompt">Create Post</Link>
                         </button>
@@ -75,6 +87,18 @@ const Nav = () => {
                                             <Link href="/cpu-benchmarks">Results</Link>
                                             <Link href="/leaderboard">Leaderboard</Link>
                                             <Link href="/view-prompts">Posts</Link>
+                                        </div>
+                                    </button>
+                                    <button type="button" className="dropdown hover-brighten">
+                                        <a>About Taipan</a>
+                                        <div className="dropdown-content">
+                                            {/* Dropdown menu items go here */}
+                                            <Link href="/about">About Us</Link>
+                                            <Link href="/contact">Contact</Link>
+                                            <Link href="/faq">FAQ</Link>
+                                            <Link href="/help-center">Help Center</Link>
+                                            <Link href="/privacy">Privacy Policy</Link>
+                                            <Link href="/terms">Terms of Service</Link>
                                         </div>
                                     </button>
                                     <button
@@ -145,6 +169,48 @@ const Nav = () => {
                                     onClick={() => setToggleDropdown(false)}
                                 >
                                     Create Post
+                                </Link>
+                                <Link
+                                    href="/about"
+                                    className="dropdown_item"
+                                    onClick={() => setToggleDropdown(false)}
+                                >
+                                    About Us
+                                </Link>
+                                <Link
+                                    href="/contact"
+                                    className="dropdown_item"
+                                    onClick={() => setToggleDropdown(false)}
+                                >
+                                    Contact
+                                </Link>
+                                <Link
+                                    href="/faq"
+                                    className="dropdown_item"
+                                    onClick={() => setToggleDropdown(false)}
+                                >
+                                    FAQ
+                                </Link>
+                                <Link
+                                    href="/help-center"
+                                    className="dropdown_item"
+                                    onClick={() => setToggleDropdown(false)}
+                                >
+                                    Help Center
+                                </Link>
+                                <Link
+                                    href="/privacy"
+                                    className="dropdown_item"
+                                    onClick={() => setToggleDropdown(false)}
+                                >
+                                    Privacy Policy
+                                </Link>
+                                <Link
+                                    href="/terms"
+                                    className="dropdown_item"
+                                    onClick={() => setToggleDropdown(false)}
+                                >
+                                    Terms of Service
                                 </Link>
                                 <button
                                     type="button"

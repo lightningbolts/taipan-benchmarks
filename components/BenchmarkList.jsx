@@ -98,7 +98,7 @@ const Feed = () => {
                     value={searchText}
                     onChange={handleSearchChange}
                     required
-                    className='search_input peer'
+                    className='search_input peer hover-enlarge'
                 />
             </form>
             <div className='mt-10 flex-center'></div>

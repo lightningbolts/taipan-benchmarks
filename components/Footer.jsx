@@ -15,35 +15,35 @@ const Footer = () => {
                 </div>
                 <div className="footer_center ">
                     <h1><strong>Downloads</strong></h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <DownloadFooter
                             os={"Windows 10 or 11"}
                             file_name={"array_windows.zip"}
                             os_logo={"windows"}
                         />
                     </h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <DownloadFooter
                             os={"MacOS (Arm)"}
                             file_name={"array_macos_arm.zip"}
                             os_logo={"apple"}
                         />
                     </h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <DownloadFooter
                             os={"MacOS (Intel)"}
                             file_name={"array_macos_intel.zip"}
                             os_logo={"apple"}
                         />
                     </h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <DownloadFooter
                             os={"Linux (Debian)"}
                             file_name={"array_linux_debian.zip"}
                             os_logo={"ubuntu"}
                         />
                     </h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <DownloadFooter
                             os={"Linux (Arch)"}
                             file_name={"array_linux_arch.zip"}
@@ -53,19 +53,19 @@ const Footer = () => {
                 </div>
                 <div className="footer_right">
                     <h1><strong>About Taipan Benchmarks</strong></h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <a href="/about">About Us</a>
                     </h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <a href="/contact">Contact</a>
                     </h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <a href="/privacy">Privacy Policy</a>
                     </h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <a href="/help-center">Help Center</a>
                     </h1>
-                    <h1 className="footer_text blue_gradient">
+                    <h1 className="footer_text blue_gradient hover-brighten">
                         <a href="/terms">Terms of Service</a>
                     </h1>
                 </div>

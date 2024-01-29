@@ -23,9 +23,9 @@ const Nav = () => {
                     alt="Taipan Benchmarks Logo"
                     width={30}
                     height={30}
-                    className="object-contain"
+                    className="object-contain hover-enlarge"
                 />
-                <p className="logo_text hover-brighten">Taipan Benchmarks</p>
+                <p className="logo_text hover-brighten-nav">Taipan Benchmarks</p>
             </Link>
 
             {/* Desktop Navigation */}
@@ -33,9 +33,9 @@ const Nav = () => {
                 {session?.user ? (
                     <div className="flex gap-3 md:gap-5">
                         <button type="button" className="">
-                            <Link href="/downloads" className="hover-brighten">Download</Link>
+                            <Link href="/downloads" className="hover-brighten-nav">Download</Link>
                         </button>
-                        <button type="button" className="dropdown hover-brighten">
+                        <button type="button" className="dropdown hover-brighten-nav">
                             <a>View</a>
                             <div className="dropdown-content">
                                 {/* Dropdown menu items go here */}
@@ -44,7 +44,7 @@ const Nav = () => {
                                 <Link href="/view-prompts">Posts</Link>
                             </div>
                         </button>
-                        <button type="button" className="dropdown hover-brighten">
+                        <button type="button" className="dropdown hover-brighten-nav">
                             <a>About Taipan</a>
                             <div className="dropdown-content">
                                 {/* Dropdown menu items go here */}
@@ -56,10 +56,10 @@ const Nav = () => {
                                 <Link href="/terms">Terms of Service</Link>
                             </div>
                         </button>
-                        <button type="button" className="hover-brighten">
+                        <button type="button" className="hover-brighten-nav">
                             <Link href="/create-prompt">Create Post</Link>
                         </button>
-                        <button type="button" onClick={signOut} className="hover-brighten">
+                        <button type="button" onClick={signOut} className="hover-brighten-nav">
                             Sign Out
                         </button>
                         <Link href="/profile" className="flex gap-2 flex-center">
@@ -67,7 +67,7 @@ const Nav = () => {
                                 src={session?.user.image}
                                 width={37}
                                 height={37}
-                                className="rounded-full"
+                                className="rounded-full hover-enlarge"
                                 alt="profile"
                             />
                         </Link>
@@ -77,10 +77,10 @@ const Nav = () => {
                         {providers &&
                             Object.values(providers).map((provider) => (
                                 <div className="flex gap-3 md:gap-5">
-                                    <button type="button" className="hover-brighten">
+                                    <button type="button" className="hover-brighten-nav">
                                         <Link href="/downloads">Download</Link>
                                     </button>
-                                    <button type="button" className="dropdown hover-brighten">
+                                    <button type="button" className="dropdown hover-brighten-nav">
                                         <a>View</a>
                                         <div className="dropdown-content">
                                             {/* Dropdown menu items go here */}
@@ -89,7 +89,7 @@ const Nav = () => {
                                             <Link href="/view-prompts">Posts</Link>
                                         </div>
                                     </button>
-                                    <button type="button" className="dropdown hover-brighten">
+                                    <button type="button" className="dropdown hover-brighten-nav">
                                         <a>About Taipan</a>
                                         <div className="dropdown-content">
                                             {/* Dropdown menu items go here */}

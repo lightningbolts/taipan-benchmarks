@@ -86,20 +86,20 @@ const PromptSlot = ({ promptData }) => {
                         alt='user_image'
                         width={40}
                         height={40}
-                        className='rounded-full object-contain'
+                        className='rounded-full object-contain hover-enlarge'
                     />
 
                     <div className='flex flex-col'>
-                        <h3 className='font-satoshi font-semibold text-gray-900'>
+                        <h3 className='font-satoshi font-semibold text-gray-900 hover-brighten-nav'>
                             {promptData.creator.username}
                         </h3>
-                        <p className='font-inter text-sm text-gray-500'>
+                        <p className='font-inter text-sm text-gray-500 hover-brighten'>
                             {promptData.creator.email}
                         </p>
                     </div>
                 </div>
 
-                <div className='copy_btn' onClick={handleCopy}>
+                <div className='copy_btn hover-enlarge' onClick={handleCopy}>
                     <Image
                         src={
                             copied === promptData.prompt
@@ -129,7 +129,7 @@ const PromptSlot = ({ promptData }) => {
 
             <p className='my-4 font-satoshi text-sm text-gray-700'>{promptData.prompt}</p>
             <p
-                className='font-inter text-sm blue_gradient cursor-pointer'
+                className='font-inter text-sm blue_gradient cursor-pointer hover-brighten'
                 // onClick={() => handleTagClick && handleTagClick(promptData.tag)}
             >
                 #{promptData.tag}
@@ -147,13 +147,13 @@ const PromptSlot = ({ promptData }) => {
                 {session?.user.id === promptData.creator._id && (
                     <>
                         <p
-                            className='font-inter text-sm green_gradient cursor-pointer'
+                            className='font-inter text-sm green_gradient cursor-pointer hover-brighten'
                             onClick={() => handleEdit && handleEdit(promptData)}
                         >
                             Edit
                         </p>
                         <p
-                            className='font-inter text-sm orange_gradient cursor-pointer'
+                            className='font-inter text-sm orange_gradient cursor-pointer hover-brighten'
                             onClick={() => handleDelete && handleDelete(promptData)}
                         >
                             Delete
@@ -162,7 +162,7 @@ const PromptSlot = ({ promptData }) => {
                 )}
                 {session?.user.id && promptData.level < 2 && (
                     <p
-                        className='font-inter text-sm blue_gradient cursor-pointer'
+                        className='font-inter text-sm blue_gradient cursor-pointer hover-brighten'
                         onClick={() => handleComment && handleComment(promptData)}
                     >
                         Comment

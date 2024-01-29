@@ -38,20 +38,20 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
             alt='user_image'
             width={40}
             height={40}
-            className='rounded-full object-contain'
+            className='rounded-full object-contain hover-enlarge'
           />
 
           <div className='flex flex-col'>
-            <h3 className='font-satoshi font-semibold text-gray-900'>
+            <h3 className='font-satoshi font-semibold text-gray-900 hover-brighten-nav'>
               {post.creator.username}
             </h3>
-            <p className='font-inter text-sm text-gray-500'>
+            <p className='font-inter text-sm text-gray-500 hover-brighten'>
               {post.creator.email}
             </p>
           </div>
         </div>
 
-        <div className='copy_btn' onClick={handleCopy}>
+        <div className='copy_btn hover-enlarge' onClick={handleCopy}>
           <Image
             src={
               copied === post.prompt
@@ -67,11 +67,11 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
 
       <p className='my-4 font-satoshi text-sm text-gray-700'>{post.prompt.split(' ').slice(0, 20).join(' ')}</p>
       <a href={`/view-prompts/${post._id}`}
-         className='font-inter text-sm text-blue-500'>
+         className='font-inter text-sm text-blue-500 hover-brighten'>
         View Full Prompt
       </a>
       <p
-          className='font-inter text-sm blue_gradient cursor-pointer'
+          className='font-inter text-sm blue_gradient cursor-pointer hover-brighten'
           onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         #{post.tag}
@@ -80,13 +80,13 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
       {session?.user.id === post.creator._id && pathName === "/profile" && (
         <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
           <p
-            className='font-inter text-sm green_gradient cursor-pointer'
+            className='font-inter text-sm green_gradient cursor-pointer hover-brighten'
             onClick={handleEdit}
           >
             Edit
           </p>
           <p
-            className='font-inter text-sm orange_gradient cursor-pointer'
+            className='font-inter text-sm orange_gradient cursor-pointer hover-brighten'
             onClick={handleDelete}
           >
             Delete

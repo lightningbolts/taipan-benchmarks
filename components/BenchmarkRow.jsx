@@ -46,7 +46,7 @@ const BenchmarkRow = ({ post, handleTagClick }) => {
                         {post.processes} Cores
                     </p>
                     <a href={`/cpu-benchmarks/${post._id}`}
-                       className='font-inter text-sm text-blue-500'>
+                       className='font-inter text-sm text-blue-500 hover-brighten'>
                         View Full Benchmark
                     </a>
                 </div>

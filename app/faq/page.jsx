@@ -78,7 +78,7 @@ const FAQ = () => {
                 <br/>
                 <h2>
                     Note that most of the features on this website are still in development. If you have any questions
-                    or suggestions, please contact us at <a href="mailto:taipanbenchmarks@gmail.com">taipanbenchmarks@gmail.com</a>.
+                    or suggestions, please contact us at <a href="mailto:taipanbenchmarks@gmail.com" className="hover-brighten hover-underline">taipanbenchmarks@gmail.com</a>.
                 </h2>
             </p>
             <Footer/>

@@ -196,13 +196,37 @@
   color: #666; /* Brighter color on hover */
 }
 
-.hover-brighten {
+.hover-brighten-nav {
   transition: color 0.15s; /* Transition effect */
   color: #000; /* Initial color */
 }
 
-.hover-brighten:hover {
+.hover-brighten-nav:hover {
   color: #666; /* Brighter color on hover */
+}
+
+.hover-underline {
+  transition: text-decoration 0.35s;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+}
+
+.hover-brighten {
+  transition: filter 0.15s;
+}
+
+.hover-brighten:hover {
+  filter: brightness(1.25);
+}
+
+.hover-enlarge {
+  transition: transform 0.15s;
+}
+
+.hover-enlarge:hover {
+  transform: scale(1.1);
 }
 
 .body-load {

@@ -24,7 +24,7 @@ const Download = ({ os, file_name, os_logo }) => {
     return (
         <button
             onClick={saveFile}
-            className="w-full black_btn mt-5 text-center">
+            className="w-full black_btn mt-5 text-center hover-enlarge">
             {os}
         </button>
     )

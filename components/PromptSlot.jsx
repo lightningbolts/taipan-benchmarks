@@ -105,10 +105,10 @@ const PromptSlot = ({ promptData }) => {
             </p>
 
             <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
-                <p className='font-inter text-sm text-gray-500'>
+                <p className='font-inter text-xs text-gray-500'>
                     Created at: {new Date(promptData.createdAt).toLocaleString()}
                 </p>
-                <p className='font-inter text-sm text-gray-500'>
+                <p className='font-inter text-xs text-gray-500'>
                     Last edited: {new Date(promptData.updatedAt).toLocaleString()}
                 </p>
                 <div className='flex-1'></div>

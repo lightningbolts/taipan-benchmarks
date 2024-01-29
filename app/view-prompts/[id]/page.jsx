@@ -55,6 +55,7 @@ const ViewPrompt = ({params}) => {
     const fetchPrompt = async () => {
         const response = await fetch(`/api/view-prompts/${params?.id}`, {cache: "no-store"});
         let data = await response.json();
+        data.level = 0;
         setPromptData(data);
     }
     useEffect(() => {

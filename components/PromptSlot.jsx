@@ -13,6 +13,23 @@ const PromptSlot = ({ promptData }) => {
     const pathName = usePathname();
     const router = useRouter();
     const [pos, setPos] = useState(null);
+    const [likeStatus, setLikeStatus] = useState(false);
+    const [dislikeStatus, setDislikeStatus] = useState(false);
+
+    const handleLike = () => {
+        if (dislikeStatus) {
+            setDislikeStatus(false);
+        }
+        setLikeStatus(!likeStatus);
+    };
+
+    const handleDislike = () => {
+        if (likeStatus) {
+            setLikeStatus(false);
+        }
+        setDislikeStatus(!dislikeStatus);
+    };
+
 
 
     const handleEdit = (promptData) => {
@@ -94,6 +111,20 @@ const PromptSlot = ({ promptData }) => {
                         height={12}
                     />
                 </div>
+                {/*<div className='flex flex-col items-center gap-2'>*/}
+                {/*    <button*/}
+                {/*        className={`font-inter text-sm ${likeStatus ? 'green_gradient' : ''} cursor-pointer`}*/}
+                {/*        onClick={handleLike}*/}
+                {/*    >*/}
+                {/*        Like*/}
+                {/*    </button>*/}
+                {/*    <button*/}
+                {/*        className={`font-inter text-sm ${dislikeStatus ? 'orange_gradient' : ''} cursor-pointer`}*/}
+                {/*        onClick={handleDislike}*/}
+                {/*    >*/}
+                {/*        Dislike*/}
+                {/*    </button>*/}
+                {/*</div>*/}
             </div>
 
             <p className='my-4 font-satoshi text-sm text-gray-700'>{promptData.prompt}</p>

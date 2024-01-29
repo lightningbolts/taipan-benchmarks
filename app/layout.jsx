@@ -24,6 +24,7 @@ const RootLayout = ({ children }) => {
                         <Nav />
                         {children}
                         <Analytics />
+                        <SpeedInsights />
                     </main>
 
                 </Provider>

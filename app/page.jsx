@@ -12,7 +12,7 @@ const Home = () => {
       <MainText />
       <p className="desc text-center">
         Taipan Benchmarks is a collection of benchmarks that are easy to use and understand. Source code is available on
-          <a href="https://github.com/lightningbolts/taipan-benchmarks" className="text-blue-500 hover-brighten"> Github</a>.
+          <a href="https://github.com/lightningbolts/taipan-benchmarks" className="text-blue-500 hover-brighten"> Github</a>. Download the benchmark, run it, and it will automatically be uploaded to the website.
       </p>
       {/* <Feed /> */}
       <BenchmarkFeed />

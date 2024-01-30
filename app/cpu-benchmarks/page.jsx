@@ -1,60 +1,27 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import BarChart from "@components/BarChart";
 import Footer from "@components/Footer";
 
 const Page = () => {
     const [cpuScores, setCpuScores] = useState([]);
-    const [isSingleCore, setIsSingleCore] = useState(true);
-    const [isMultiCore, setIsMultiCore] = useState(false);
-    const [isApple, setIsApple] = useState(false);
-    const [isIntel, setIsIntel] = useState(false);
-    const [isAMD, setIsAMD] = useState(false);
-    const [isWindows, setIsWindows] = useState(false);
-    const [isMacOS, setIsMacOS] = useState(false);
-    const [isLinux, setIsLinux] = useState(false);
     const [activeTab, setActiveTab] = useState('single');
-
-    const setAllFalse = () => {
-        setIsSingleCore(false);
-        setIsMultiCore(false);
-        setIsApple(false);
-        setIsIntel(false);
-        setIsAMD(false);
-        setIsWindows(false);
-        setIsMacOS(false);
-        setIsLinux(false);
-    }
+    const [tabStates, setTabStates] = useState({
+        isSingleCore: true,
+        isMultiCore: false,
+        isSpeedup: false,
+        isEfficiency: false,
+    });
 
     const handleTabChange = (tab) => {
         setActiveTab(tab);
-        if (tab === 'single') {
-            setAllFalse();
-            setIsSingleCore(true);
-        } else if (tab === 'multi') {
-            setAllFalse();
-            setIsMultiCore(true);
-        } else if (tab === 'apple') {
-            setAllFalse();
-            setIsApple(true);
-        } else if (tab === 'intel') {
-            setAllFalse();
-            setIsIntel(true);
-        } else if (tab === 'amd') {
-            setAllFalse();
-            setIsAMD(true);
-        } else if (tab === 'windows') {
-            setAllFalse();
-            setIsWindows(true);
-        } else if (tab === 'macos') {
-            setAllFalse();
-            setIsMacOS(true);
-        } else if (tab === 'linux') {
-            setAllFalse();
-            setIsLinux(true);
-        }
+        setTabStates({
+            isSingleCore: tab === 'single',
+            isMultiCore: tab === 'multi',
+            isSpeedup: tab === 'speedup',
+            isEfficiency: tab === 'efficiency',
+        });
     }
-
     useEffect(() => {
         // Fetch CPU scores from an API or database
         const fetchCpuScores = async () => {
@@ -71,38 +38,15 @@ const Page = () => {
         fetchCpuScores();
     }, []);
 
-    // Get the average single core score for each CPU Model
-    const calculateAverageSingleCoreScore = () => {
+    // Get the average score for each CPU Model
+    const calculateAverageScore = (scoreType) => {
         const cpuModelScores = {};
 
         cpuScores.forEach((cpu) => {
             if (cpuModelScores[cpu.cpu_model]) {
-                cpuModelScores[cpu.cpu_model].push(cpu.single_core_score);
+                cpuModelScores[cpu.cpu_model].push(cpu[scoreType]);
             } else {
-                cpuModelScores[cpu.cpu_model] = [cpu.single_core_score];
-            }
-        });
-
-        const averageScores = {};
-
-        Object.keys(cpuModelScores).forEach((cpuModel) => {
-            const cpuModelScore = cpuModelScores[cpuModel];
-            const sum = cpuModelScore.reduce((a, b) => a + b, 0);
-            const avg = (sum / cpuModelScore.length) || 0;
-            averageScores[cpuModel] = avg.toFixed(2);
-        });
-
-        return averageScores;
-    }
-    // Get the average multi core score for each CPU Model
-    const calculateAverageMultiCoreScore = () => {
-        const cpuModelScores = {};
-
-        cpuScores.forEach((cpu) => {
-            if (cpuModelScores[cpu.cpu_model]) {
-                cpuModelScores[cpu.cpu_model].push(cpu.multi_core_score);
-            } else {
-                cpuModelScores[cpu.cpu_model] = [cpu.multi_core_score];
+                cpuModelScores[cpu.cpu_model] = [cpu[scoreType]];
             }
         });
 
@@ -118,75 +62,16 @@ const Page = () => {
         return averageScores;
     }
 
-    // Retrieve all the single core scores with CPU Model as key and score as value in an array
-    const getSingleCoreScores = () => {
-        const scores = [];
-
-        cpuScores.forEach((cpu) => {
-            scores.push([cpu.cpu_model, cpu.single_core_score]);
-        });
-
-        return scores;
-    }
-
-    // Retrieve all the multi core scores with CPU Model as key and score as value in an array
-    const getMultiCoreScores = () => {
-        const scores = [];
-
-        cpuScores.forEach((cpu) => {
-            scores.push([cpu.cpu_model, cpu.multi_core_score]);
-        });
-
-        return scores;
-    }
-
-    // Sort the CPU Models by their average single core scores
-    const sortSingleCoreScores = () => {
-        const scores = calculateAverageSingleCoreScore();
-        const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-
-        return sortedScores;
-    }
-
-    // Sort the CPU Models by their average multi core scores
-    const sortMultiCoreScores = () => {
-        const scores = calculateAverageMultiCoreScore();
-        const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-
-        return sortedScores;
-    }
-
-    // Get max single core score
-    const getMaxSingleCoreScore = () => {
-        const scores = calculateAverageSingleCoreScore();
-        const maxScore = Math.max(...Object.values(scores));
-
-        return maxScore;
-    }
-
-    // Get max multi core score
-    const getMaxMultiCoreScore = () => {
-        const scores = calculateAverageMultiCoreScore();
-        const maxScore = Math.max(...Object.values(scores));
-
-        return maxScore;
+    // Sort the CPU Models by their average scores
+    const sortScores = (scoreType) => {
+        const scores = calculateAverageScore(scoreType);
+        return Object.entries(scores).sort((a, b) => b[1] - a[1]);
     }
 
     // Get number of items in single core scores
     const getSingleCoreScoresLength = () => {
-        const scores = calculateAverageSingleCoreScore();
-        const length = Object.values(scores).length;
-
-        return length;
-    }
-
-    // Get number of items in multi core scores
-
-    const getMultiCoreScoresLength = () => {
-        const scores = calculateAverageMultiCoreScore();
-        const length = Object.values(scores).length;
-
-        return length;
+        const scores = calculateAverageScore("single_core_score");
+        return Object.values(scores).length;
     }
 
     const chartWidth = `100vh`;
@@ -194,13 +79,8 @@ const Page = () => {
 
     return (
         <div>
-            <h1 className='head_text text-center blue_gradient'>
-                CPU Benchmark Results
-                <br className='max-md:hidden' />
-                <span className='orange_gradient text-center w-full flex-center'>
-                    {' '}
-                    Right now.
-                </span>
+            <h1 className='head_text text-center w-full blue_gradient'>
+                CPU Benchmark Results. Now.
             </h1>
             <br />
             <br />
@@ -215,21 +95,55 @@ const Page = () => {
                     <button onClick={() => handleTabChange('multi')} className={`text-center black_btn ${activeTab === 'multi' ? 'active-tab' : ''}`}>
                         {activeTab === 'multi' ? <strong>Multi Core</strong> : 'Multi Core'}
                     </button>
+                    <button onClick={() => handleTabChange('speedup')} className={`text-center black_btn ${activeTab === 'speedup' ? 'active-tab' : ''}`} style={{ marginLeft: '10px' }}>
+                        {activeTab === 'speedup' ? <strong>Speedup</strong> : 'Speedup'}
+                    </button>
+                    <button onClick={() => handleTabChange('efficiency')} className={`text-center black_btn ${activeTab === 'efficiency' ? 'active-tab' : ''}`} style={{ marginLeft: '10px' }}>
+                        {activeTab === 'efficiency' ? <strong>Efficiency</strong> : 'Efficiency'}
+                    </button>
                 </div>
             </div>
             <br />
             <br />
             <br />
             <br />
-            {isSingleCore ? (
-                <div style={{ width: chartWidth, height: chartHeight, overflow: 'auto' }} className="w-full">
-                    <BarChart data={sortSingleCoreScores()} />
-                </div>
-            ) : (
-                <div style={{ width: chartWidth, height: chartHeight, overflow: 'auto' }} className="w-full">
-                    <BarChart data={sortMultiCoreScores()} />
-                </div>
+            {activeTab === 'single' && (
+                <BarChart
+                    data={sortScores('single_core_score')}
+                    width={chartWidth}
+                    height={chartHeight}
+                    scoreType='single_core_score'
+                    tabStates={tabStates}
+                />
             )}
+            {activeTab === 'multi' && (
+                <BarChart
+                    data={sortScores('multi_core_score')}
+                    width={chartWidth}
+                    height={chartHeight}
+                    scoreType='multi_core_score'
+                    tabStates={tabStates}
+                />
+            )}
+            {activeTab === 'speedup' && (
+                <BarChart
+                    data={sortScores('speedup')}
+                    width={chartWidth}
+                    height={chartHeight}
+                    scoreType='speedup'
+                    tabStates={tabStates}
+                />
+            )}
+            {activeTab === 'efficiency' && (
+                <BarChart
+                    data={sortScores('efficiency')}
+                    width={chartWidth}
+                    height={chartHeight}
+                    scoreType='efficiency'
+                    tabStates={tabStates}
+                />
+            )}
+
             <div className="mt-5 flex-center"></div>
             <Footer />
         </div>

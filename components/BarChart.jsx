@@ -12,7 +12,8 @@ const BarChart = ({ data }) => {
 
     // remove decimals from data values
     data.forEach(([, value], i) => {
-        data[i][1] = Math.round(value);
+        // Round to 2 decimal places
+        data[i][1] = Math.round(value * 100) / 100;
     });
 
     // Remove (R) from Intel(R) and (TM) from Core(TM) and Processor and CPU and "__th Gen" and "with Radeon Graphics", but don't remove Core for all cpu models

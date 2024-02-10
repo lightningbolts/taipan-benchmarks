@@ -14,23 +14,28 @@ export const metedata = {
 const RootLayout = ({ children }) => {
     return (
         <html lang="en">
+        <head>
+            <script src="https://unpkg.com/tachyonjs@2.0.1/tachyon.min.js"
+                    integrity="sha384-4iJteL1FYnj4Ju83AJvNthpx5gZ1QaXCamXhY3lxhAjTNXUN+NXq5LQV/fXOSRme" type="module"
+                    crossOrigin defer></script>
+        </head>
             <body>
-                <Provider>
-                    <div className='main'>
-                        <div className='gradient'>
-                        </div>
+            <Provider>
+                <div className='main'>
+                    <div className='gradient'>
                     </div>
-                    <main className='app'>
-                        <Nav />
-                        {children}
-                        <Analytics />
-                        <SpeedInsights />
-                    </main>
+                </div>
+                <main className='app'>
+                    <Nav/>
+                    {children}
+                    <Analytics/>
+                    <SpeedInsights/>
+                </main>
 
-                </Provider>
+            </Provider>
             </body>
         </html>
-    )
+)
 }
 
 export default RootLayout
